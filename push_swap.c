@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 15:00:52 by atucci           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:46:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char *av[])
 	// If there are 3 elements in the stack, print a message indicating this.
 	if (count  == 3)
 		sort_tre(&stack);
-	else
+	else if (count > 3)
 		sort_stack(&stack);
 	print_stack(&stack);
 	free(stack.stack_a);

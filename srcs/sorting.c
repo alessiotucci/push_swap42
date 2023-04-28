@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 15:03:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:44:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	sort_due(t_stack *stk)
 	count = 0;
 	// If the first element in stack_a is greater than or equal to the second element,
 	// swap the first two elements and increment the count
-	if (!(stk->stack_a[0] < stk->stack_a[1]))
+	//if (!(stk->stack_a[0] < stk->stack_a[1]))
+	if (is_sorted(stk) == 0)
 	{
 		sa(stk);
 		count++;
@@ -73,3 +74,18 @@ void	sort_stack(t_stack *stk)
 	ft_printf("I am working on it");
 
 }
+
+int	is_sorted(t_stack *stk)
+{
+	int	i;
+
+	i = 0;
+	while (i < stk->la - 1)
+	{
+		if (stk->stack_a[i] > stk->stack_a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 15:03:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:40:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	sort_due(t_stack *stk);
 void	sort_tre(t_stack *stk);
 void	print_stack(t_stack *stk);
 void	sort_stack(t_stack *stk);
+int		is_sorted(t_stack *stk);
 #endif
