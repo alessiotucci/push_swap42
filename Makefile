@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 16:42:18 by atucci            #+#    #+#              #
-#    Updated: 2023/04/28 11:31:06 by atucci           ###   ########.fr        #
+#    Updated: 2023/04/28 14:35:45 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME = push_swap
 SRC = ./push_swap.c \
 	  srcs/filling.c \
       srcs/moves.c \
-      srcs/moves2.c \
+	  srcs/sorting.c \
+	  srcs/moves2.c \
 
 #This sets the variable SRC to a list of C source files that are needed to build the push_swap executable.
 
