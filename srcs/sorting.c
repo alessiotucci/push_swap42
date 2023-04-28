@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 14:39:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/04/28 15:03:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,9 @@ void	sort_tre(t_stack *stk)
 	return ;
 }
 
+void	sort_stack(t_stack *stk)
+{
+	if (stk)
+	ft_printf("I am working on it");
+
+}
