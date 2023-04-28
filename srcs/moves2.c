@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 11:54:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/04/28 11:54:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void rra(t_stack *stk)
 	write(1, "rra\n", 4); // print "rra" to standard output
 }
 
-/
+
 // This function rotates stack B downwards by one position
 void rrb(t_stack *stk)
 {
