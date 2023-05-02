@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 14:33:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/02 11:43:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
 		ft_printf("stack_a: [%d] %d\n", count,  stack->stack_a[count - 1]);
 		count++;
 	}
+// 	CHATGPT SUGGERISCE
+		stack->stack_b = (int *)malloc(sizeof(int) * stack->la);
+		if (stack->stack_b == NULL)
+			return ;
+		stack->lb = 0;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 16:44:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/02 11:08:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,23 @@ void	sort_tre(t_stack *stk)
 
 void	sort_stack(t_stack *stk)
 {
-	if (stk)
-	ft_printf("I am working on it");
+	int pos;
+	int nb;
 
+	if (stk)
+	ft_printf("I am working on it\n");
+	// while the stack  is not sorted
+	//nb = find_small(stk, &pos);
+	while (is_sorted(stk) == 0)
+	{
+	nb = find_small(stk, &pos);
+	//ft_printf("the smallest int is: %d\n", nb);
+	if (stk->stack_a[0] == nb)
+		pb(stk);
+	else 
+		rra(stk);
+	// there is room for improvement;
+	}
 }
 
 int	is_sorted(t_stack *stk)
@@ -89,3 +103,23 @@ int	is_sorted(t_stack *stk)
 	return (1);
 }
 
+int	find_small(t_stack *stk, int *pos)
+{
+	int small;
+	int	count;
+
+	count = 0;
+	*pos = 0;
+	small = stk->stack_a[0];
+	while (count < stk->la)
+	{
+		if (stk->stack_a[count] < small) // if it's smaller than the one I already have...
+		{
+			small = stk->stack_a[count]; // we update the small variables
+			*pos = count;
+		}
+		count++;
+	}
+
+	return (small);
+}
