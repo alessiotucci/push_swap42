@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 12:55:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:13:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_due(t_stack *stk)
 	//if (!(stk->stack_a[0] < stk->stack_a[1]))
 	if (is_sorted(stk) == 0)
 	{
-		sa(stk, 0);
+		sa(&stk, 0);
 		count++;
 	}
 	// Print the number of moves made
@@ -32,7 +32,7 @@ void	sort_due(t_stack *stk)
 }
 
 void	sort_tre(t_stack *stk)
-{
+{ /*
 	// Continue until the first three elements of stack_a are in ascending order
 	while (!(stk->stack_a[0] < stk->stack_a[1]
 			&& stk->stack_a[1] < stk->stack_a[2]))
@@ -66,11 +66,14 @@ void	sort_tre(t_stack *stk)
 	// Print the number of moves made
 	ft_printf("I did it at least 2  moves\n");
 	return ;
+*/	if (stk)
+	ft_printf("i have no time");
+	return ;
 }
 
 void	sort_stack(t_stack *stk)
 {
-	int pos;
+/*	int pos;
 	int nb;
 
 	if (stk)
@@ -98,7 +101,10 @@ void	sort_stack(t_stack *stk)
 // I need to check if the stack b is sorted in decresing order
 	if (stk->lb <= 2 && is_B_sorted(stk) == 1)
 		pa(stk);
-
+*/
+	if (stk)
+	ft_printf("non ho tempo:");
+	return ;
 }
 
 int	is_sorted(t_stack *stk)
@@ -116,6 +122,7 @@ return (1); // sorted :)
 
 int	find_small(t_stack *stk, int *pos)
 {
+/*
 	int small;
 	int	count;
 
@@ -133,4 +140,8 @@ int	find_small(t_stack *stk, int *pos)
 	}
 
 	return (small);
+*/
+	if (stk && pos)
+		ft_printf("ciao");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 14:27:24 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:25:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int ac, char *av[])
 	int count;
 
 	// Declare a stack variable, I am working  with node of list.
-	t_stack *stack_a = NULL;
+	t_stack *stack_a;
+	ft_memset(&stack_a, 0, sizeof(stack_a));
 
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
@@ -41,7 +42,7 @@ int	main(int ac, char *av[])
 	// If there are exactly 2 arguments, split the numbers in the string argument and store them in the stack.
 	if (ac == 2)
 	{
-		//	split_num_in_stack(av[1], &stack_a);
+		split_num_in_stack(av[1], stack_a);
 	}
 	// If there are more than 2 arguments, fill the stack with numbers from the arguments.
 	else if (ac > 2)

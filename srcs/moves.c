@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 12:58:12 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:08:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,38 @@
 #include "../incl/push_swap.h"
 
 // Function to push the top element from Stack B to Stack A
-void pa(t_stack *stk)
+void pa(t_stack **a, t_stack **b, int j)
 {
-// If Stack B is empty, return without any action
-if (!stk->stack_b)
-return ;
-// Increment the pointer to the top element in Stack A
-stk->stack_a++;
-// Shifting elements in Stack A to create space for the new element
-int i = stk->la - 1;
-while (i > 0)
-{
-stk->stack_a[i] = stk->stack_a[i - 1];
-i--;
-}
-// Moving the top element from Stack B to the bottom of Stack A
-stk->stack_a[0] = stk->stack_b[0];
-// Shifting remaining elements in Stack B to fill the void left by the removed element
-i = 0;
-while (i < stk->lb - 1)
-{
-stk->stack_b[i] = stk->stack_b[i + 1];
-i++;
-}
-// Decrement the size of Stack B
-stk->lb--;
-// Print the push operation
-write(1, "pa\n", 3);
+	t_stack	*tmp;
+
+	if (!*b)
+		return ;
+	tmp = *a;
+	*a = *b;
+	*b = (*b)->next;
+	(*a)->next = tmp;
+	if (j == 0)
+		write(1, "pa\n", 3);
+
 }
 
 // Function to push the top element from Stack A to Stack B
-void pb(t_stack *stk)
+void pb(t_stack **stack_a, t_stack **stack_b, int j)
 {
-// If Stack A is empty, return without any action
-	if (!stk->stack_a)
+	t_stack	*tmp;
+
+	if (!*stack_a)
 		return ;
-// Increment the pointer to the top element in Stack B
-	stk->stack_b++;
-	//CHATGPT SUGGERISCE
-	stk->lb++;
-// Shifting elements in Stack B to create space for the new element
-	int i = stk->lb - 1;
-	while (i > 0)
-	{
-		stk->stack_b[i] = stk->stack_b[i - 1];
-		i--;
-	}
-// Moving the top element from Stack A to the bottom of Stack B
-	stk->stack_b[0] = stk->stack_a[0];
-// Shifting remaining elements in Stack A to fill the void left by the removed element
-	i = 0;
-	while (i < stk->la - 1)
-	{
-		stk->stack_a[i] = stk->stack_a[i + 1];
-		i++;
-	}
-// Decrement the size of Stack A
-	stk->la--;
-// Print the push operation
-write(1, "pb\n", 3);
+	tmp = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = (*stack_a)->next;
+	(*stack_b)->next = tmp;
+	if (j == 0)
+		write(1, "pb\n", 3);
 }
 
 // Function to swap the first two elements in Stack A
-void sa(t_stack **stk, int j)
+void sa(t_stack **a, int j)
 {
 	t_stack	*tmp;
 
@@ -97,17 +66,18 @@ void sa(t_stack **stk, int j)
 }
 
 // Function to swap the first two elements in Stack B
-void sb(t_stack *stk)
+void sb(t_stack **b, int j)
 {
-// If Stack B has less than two elements, return without any action
-if (!(stk->stack_b[0] || stk->stack_b[1]))
-return ;
-// Swap the first two elements of Stack B
-int tmp = stk->stack_b[1];
-stk->stack_b[1] = stk->stack_b[0];
-stk->stack_b[0] = tmp;
-// Print the swap operation
-write(1, "sb\n", 3);
+	t_stack	*tmp;
+
+	if (!*b || !((*b)->next))
+		return ;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = (*b)->next;
+	(*b)->next = tmp;
+	if (j == 0)
+		write(1, "sb\n", 3);
 }
 
 //

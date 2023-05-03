@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 11:54:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:17:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // Function to rotate stack A
 void ra(t_stack *stk)
 {
+/*
 	int tmp;
 	int i;
 
@@ -29,13 +30,14 @@ void ra(t_stack *stk)
 		i++;
 	}
 	stk->stack_a[i] = tmp; // place the saved element at the end of the stack
+*/if (stk)
 	write(1, "ra\n", 3); // print "ra" to standard output
 }
 
 // Function to rotate stack B
 void rb(t_stack *stk)
 {
-	int tmp;
+/*	int tmp;
 	int i;
 
 	i = 0;
@@ -48,13 +50,14 @@ void rb(t_stack *stk)
 		i++;
 	}
 	stk->stack_b[i] = tmp; // place the saved element at the end of the stack
+*/	if (stk)
 	write(1, "rb\n", 3); // print "rb" to standard output
 }
 
 // Function to rotate both stack A and stack B
 void rr(t_stack *stk)
 {
-	int tmp_a;
+/*	int tmp_a;
 	int tmp_b;
 	int i;
 
@@ -76,13 +79,14 @@ void rr(t_stack *stk)
 		i++;
 	}
 	stk->stack_b[i] = tmp_b; // place the saved element at the end of stack B
+*/if (stk)
 	write(1, "rr\n", 3); // print "rr" to standard output
 }
 
 // Function to reverse rotate stack A
 void rra(t_stack *stk)
 {
-	int tmp;
+/*	int tmp;
 	int i;
 
 	i = stk->la - 1;
@@ -93,6 +97,7 @@ void rra(t_stack *stk)
 		i--;
 	}
 	stk->stack_a[0] = tmp; // place the saved element at the beginning of stack A
+*/if (stk)
 	write(1, "rra\n", 4); // print "rra" to standard output
 }
 
@@ -100,7 +105,7 @@ void rra(t_stack *stk)
 // This function rotates stack B downwards by one position
 void rrb(t_stack *stk)
 {
-	int tmp; // variable to store the top element of stack B
+/*	int tmp; // variable to store the top element of stack B
 	int i; // loop counter
 	i = stk->lb - 1;
 	tmp = stk->stack_b[i];
@@ -110,5 +115,6 @@ void rrb(t_stack *stk)
 		i--;
 	}
 	stk->stack_b[0] = tmp; // place the top element at the bottom of stack B
+*/if (stk)
 	write(1, "rrb\n", 4); // print the name of the operation to stdout
 }
