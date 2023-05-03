@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/02 11:43:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:54:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,57 +16,86 @@
 //This function takes a string of numbers as input and splits them into separate integers to store in stack_a
 void	split_num_in_stack(char *number, t_stack *stack)
 {
-	int	count;
-	char	**input_number;
+    int     count = 0;
+    char    **input_number;
 
-	count = 0;
-	//allocate memory for stack_a
-	stack->stack_a = malloc(stack->la * sizeof(int));
-	if (stack->stack_a == NULL)
-		return ;
-	//split the string into individual numbers and store them in input_number array
-	input_number = ft_split(number, ' ');
-	//loop through the array of input numbers, converting each string to integer and storing them in stack_a array
-	while (number[count])
-	{
-		//convert the input string to integer and store it in stack_a array
-		stack->stack_a[count] = ft_atoi(input_number[count]);
-		//print the current integer value and its index
-		ft_printf("Stack A [%d]: %d\n", count, stack->stack_a[count]);
-		//free the memory allocated for the current input number
-		free (input_number[count]);
-		count++;
-	}
-	//free the memory allocated for the input_number array
-	free(input_number);
+    // split the string into individual numbers and store them in input_number array
+    input_number = ft_split(number, ' ');
+
+    // loop through the array of input numbers, converting each string to integer and storing them in the linked list
+    while (input_number[count])
+    {
+        // create a new node for the linked list
+        t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
+        if (!new_node)
+            return ;
+
+        // fill up the node with the integer value, index and pointers to next and previous nodes
+        new_node->nbr = ft_atoi(input_number[count]);
+        new_node->index = count;
+        new_node->next = NULL;
+        new_node->prev = NULL;
+
+        // add the node to the end of the linked list
+        if (!stack->next)
+        {
+            stack->next = new_node;
+            stack->prev = new_node;
+        }
+        else
+        {
+            new_node->prev = stack->prev;
+            stack->prev->next = new_node;
+            stack->prev = new_node;
+        }
+
+        //print the current integer value and its index
+        ft_printf("Stack A [%d]: %d\n", count, new_node->nbr);
+        count++;
+    }
+
+    // free the memory allocated for the input_number array
+    free(input_number);
 }
 
 //This function fills the stack_a array with integers given as arguments to the program
-void	fill_stack(int ac, char *av[], t_stack *stack)
+void	fill_stack(int ac, char *av[], t_stack **stack)
 {
 	int count;
+	t_stack *curr;
 
 	count = 1;
+	curr = NULL;
 	//set the size of the stack to the number of input arguments minus one
-	stack->la = ac - 1;
+	//stack->la = ac - 1;
 	//allocate memory for stack_a
-	stack->stack_a = malloc(stack->la * sizeof(int));
-	if (stack->stack_a == NULL)
-		return ;
+	//stack->stack_a = malloc(stack->la * sizeof(int));
+	//if (stack->stack_a == NULL)
+		//return ;
 	//loop through the input arguments, converting each string to integer and storing them in stack_a array
-	while (count < ac)
+	while (count < ac && stack)
 	{
-		//convert the input string to integer and store it in stack_a array
-		stack->stack_a[count - 1] = ft_atoi(av[count]);
-		//print the current integer value
-		ft_printf("stack_a: [%d] %d\n", count,  stack->stack_a[count - 1]);
+		//  CONVERT THE INPUT  STRING TO INT AND  CREATE A NEW  NODE FOR IT
+		t_stack *new_node =  malloc(sizeof(t_stack));
+		new_node->nbr = ft_atoi(av[count]);
+		new_node->index = count;
+		new_node->next = NULL;
+		new_node->prev = curr;
+		// ADD THE NEW NODE TO THE TOP OF THE LINKED LIST
+		if (curr != NULL)
+			curr->next = new_node;
+	/*	else
+			(*stack)->stack_a = new_node;*/
+		curr = new_node;
+		// printing this fucking nonsense
+		ft_printf("stack_a: [%d] %ld\n", new_node->index, new_node->nbr);
 		count++;
 	}
 // 	CHATGPT SUGGERISCE
-		stack->stack_b = (int *)malloc(sizeof(int) * stack->la);
-		if (stack->stack_b == NULL)
+	//	stack->stack_b = (int *)malloc(sizeof(int) * stack->la);
+	//	if (stack->stack_b == NULL)
 			return ;
-		stack->lb = 0;
+		//stack->lb = 0;
 }
 
 /*
@@ -114,12 +143,9 @@ int	correct_char(char *str)
 
 void	print_stack(t_stack *stk)
 {
-	// Print the contents of stack_a
-	printf("stack_a: ");
-	int i = 0;
-	while (i < stk->la) // Loop through the stack_a array
+	while (stk != NULL) // Loop through the LIST
 	{
-		printf("%d ", stk->stack_a[i]); // Print each value of stack_a
-		i++;
+		ft_printf(" [%ld]  %ld ", stk->index, stk->nbr); // Print each value of stack_a
+		stk = stk->next;
 	}
 }

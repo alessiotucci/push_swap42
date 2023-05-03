@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/02 11:08:34 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:55:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_due(t_stack *stk)
 	//if (!(stk->stack_a[0] < stk->stack_a[1]))
 	if (is_sorted(stk) == 0)
 	{
-		sa(stk);
+		sa(stk, 0);
 		count++;
 	}
 	// Print the number of moves made
@@ -76,31 +76,42 @@ void	sort_stack(t_stack *stk)
 	if (stk)
 	ft_printf("I am working on it\n");
 	// while the stack  is not sorted
-	//nb = find_small(stk, &pos);
+	if (is_sorted(stk) == 1)
+	{
+		ft_printf("already sorted\n");
+		return ;
+	}
 	while (is_sorted(stk) == 0)
 	{
 	nb = find_small(stk, &pos);
 	//ft_printf("the smallest int is: %d\n", nb);
 	if (stk->stack_a[0] == nb)
+	{
 		pb(stk);
+		//stack->lb++;
+	}
 	else 
 		rra(stk);
 	// there is room for improvement;
 	}
+// at this point i need to empty the stack b if the stack a is sorted.
+// I need to check if the stack b is sorted in decresing order
+	if (stk->lb <= 2 && is_B_sorted(stk) == 1)
+		pa(stk);
+
 }
 
 int	is_sorted(t_stack *stk)
 {
-	int	i;
+	t_stack *current = stk;
 
-	i = 0;
-	while (i < stk->la - 1)
+	while (current != NULL && current->next != NULL)
 	{
-		if (stk->stack_a[i] > stk->stack_a[i + 1])
-			return (0);
-		i++;
+		if (current->nbr > current->next->nbr)
+			return (0); // Not sorted
+	current = current->next;
 	}
-	return (1);
+return (1); // sorted :)
 }
 
 int	find_small(t_stack *stk, int *pos)

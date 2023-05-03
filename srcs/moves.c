@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/04/28 11:48:03 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:58:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,52 @@ write(1, "pa\n", 3);
 void pb(t_stack *stk)
 {
 // If Stack A is empty, return without any action
-if (!stk->stack_a)
-return ;
+	if (!stk->stack_a)
+		return ;
 // Increment the pointer to the top element in Stack B
-stk->stack_b++;
+	stk->stack_b++;
+	//CHATGPT SUGGERISCE
+	stk->lb++;
 // Shifting elements in Stack B to create space for the new element
-int i = stk->lb - 1;
-while (i > 0)
-{
-stk->stack_b[i] = stk->stack_b[i - 1];
-i--;
-}
+	int i = stk->lb - 1;
+	while (i > 0)
+	{
+		stk->stack_b[i] = stk->stack_b[i - 1];
+		i--;
+	}
 // Moving the top element from Stack A to the bottom of Stack B
-stk->stack_b[0] = stk->stack_a[0];
+	stk->stack_b[0] = stk->stack_a[0];
 // Shifting remaining elements in Stack A to fill the void left by the removed element
-i = 0;
-while (i < stk->la - 1)
-{
-stk->stack_a[i] = stk->stack_a[i + 1];
-i++;
-}
+	i = 0;
+	while (i < stk->la - 1)
+	{
+		stk->stack_a[i] = stk->stack_a[i + 1];
+		i++;
+	}
 // Decrement the size of Stack A
-stk->la--;
+	stk->la--;
 // Print the push operation
 write(1, "pb\n", 3);
 }
 
 // Function to swap the first two elements in Stack A
-void sa(t_stack *stk)
+void sa(t_stack **stk, int j)
 {
-// If Stack A has less than two elements, return without any action
-if (!(stk->stack_a[0] || stk->stack_a[1]))
-return ;
-// Swap the first two elements of Stack A
-int tmp = stk->stack_a[1];
-stk->stack_a[1] = stk->stack_a[0];
-stk->stack_a[0] = tmp;
-// Print the swap operation
-write(1, "sa\n", 3);
+	t_stack	*tmp;
+
+	if (!*a || !((*a)->next))
+		return ;
+	tmp = (*a)->next;
+	(*a)->next = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = *a;
+	tmp->next = *a;
+	tmp->prev = (*a)->prev;
+	(*a)->prev = tmp;
+	*a = tmp;
+	if (j == 0)
+		write(1, "sa\n", 3);
+
 }
 
 // Function to swap the first two elements in Stack B
