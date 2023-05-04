@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 17:25:10 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/04 18:16:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int	main(int ac, char *av[])
 	int count;
 
 	// Declare a stack variable, I am working  with node of list.
-	t_stack *stack_a;
-	ft_memset(&stack_a, 0, sizeof(stack_a));
+	t_stack *stack_a = malloc(sizeof(t_stack));
+	stack_a->nbr = 0;
+	stack_a->index = 0;
+	stack_a->next = NULL;
+	stack_a->prev = NULL;	
 
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
@@ -61,7 +64,7 @@ int	main(int ac, char *av[])
 	else if (count > 3)
 		sort_stack(stack_a);
 	print_stack(stack_a);
-	//free(stack.stack_a);
+	free(stack_a);
 	return (0);
 }
 

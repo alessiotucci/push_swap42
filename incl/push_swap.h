@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 17:07:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/04 18:15:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_stack
 {
-    long nbr;               // The integer value stored in the node
-    long index;             // The index of the node in the list
+    int nbr;               // The integer value stored in the node
+    int index;             // The index of the node in the list
     struct s_stack *next;   // A pointer to the next node in the list
     struct s_stack *prev;   // A pointer to the previous node in the list
 } t_stack;

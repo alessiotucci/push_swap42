@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 16:53:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/04 18:29:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	print_stack(t_stack *stk)
 {
 	while (stk != NULL) // Loop through the LIST
 	{
-		ft_printf(" [%ld]  %ld ", stk->index, stk->nbr); // Print each value of stack_a
+		ft_printf(" [%d]  %d\n", stk->index, stk->nbr); // Print each value of stack_a
 		stk = stk->next;
 	}
 }
