@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/04 18:16:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/05 12:24:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char *av[])
 	}
 	// If there are more than 2 arguments, fill the stack with numbers from the arguments.
 	else if (ac > 2)
-		fill_stack(ac, av, &stack_a);
+		fill_stack(ac, av, stack_a);
 	// Initialize a count variable to 0.
 	count = 0;
 	// Iterate through the elements in stack_a and increment the count variable.
@@ -63,6 +63,7 @@ int	main(int ac, char *av[])
 		sort_tre(stack_a);
 	else if (count > 3)
 		sort_stack(stack_a);
+	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(stack_a);
 	free(stack_a);
 	return (0);

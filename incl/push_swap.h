@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/04 18:15:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/05 12:23:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		len_stack_a(char *str);
 int		correct_char(char *str);
 int		check_stack(t_stack *stk);
 void	split_num_in_stack(char *number, t_stack *stack);
-void	fill_stack(int ac, char *av[], t_stack **stack);
+void	fill_stack(int ac, char *av[], t_stack *stack);
 void	pa(t_stack **a, t_stack **b, int j);
 void	pb(t_stack **stack_a, t_stack **stack_b, int j);
 void	sa(t_stack **a, int j);
