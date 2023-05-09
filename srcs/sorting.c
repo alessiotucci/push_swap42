@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 17:13:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:39:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	sort_stack(t_stack *stk)
 		pa(stk);
 */
 	if (stk)
-	ft_printf("non ho tempo:");
+	ft_printf("algoritmo generale di sorting:");
 	return ;
 }
 
@@ -145,3 +145,15 @@ int	find_small(t_stack *stk, int *pos)
 		ft_printf("ciao");
 	return (0);
 }
+
+void testa_toro(t_stack **stack)
+{
+	if (*stack == NULL)
+		return;
+	t_stack *temp = *stack;
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+		free(temp);
+}
+
