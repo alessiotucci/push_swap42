@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 15:18:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:41:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char *av[])
 
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
-		ft_printf("\tsei\tun\tcojone\n");
+		return(ft_printf("\tsei\tun\tcojone\n"));
 	// If there are exactly 2 arguments, split the numbers in the string argument and store them in the stack.
 	if (ac == 2)
 	{
@@ -52,7 +52,8 @@ int	main(int ac, char *av[])
 	}
 // follia pura 
 
-
+// TAGLIARE LA TESTA AL  TORO
+	testa_toro(&stack_a);
 
 // // follia pura
 	// If there are 2 elements in the stack, print a message indicating this.

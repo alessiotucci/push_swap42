@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/05 14:42:15 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:39:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	sort_stack(t_stack *stk);
 int		is_B_sorted(t_stack *stk);
 int		is_sorted(t_stack *stk);
 int		find_small(t_stack *stk, int *pos);
+void	testa_toro(t_stack **stack);
 #endif
