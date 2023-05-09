@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/05 12:24:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:18:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,18 @@
 // The main function of the program, which takes in command-line arguments and performs actions based on them.
 int	main(int ac, char *av[])
 {
-	// Declare a variable to keep track of the number of elements in the stack.
-	int count;
-
 	// Declare a stack variable, I am working  with node of list.
 	t_stack *stack_a = malloc(sizeof(t_stack));
 	stack_a->nbr = 0;
 	stack_a->index = 0;
 	stack_a->next = NULL;
-	stack_a->prev = NULL;	
+	stack_a->prev = NULL;
+
+
 
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
-		ft_printf("sei un cojone");
-
+		ft_printf("\tsei\tun\tcojone\n");
 	// If there are exactly 2 arguments, split the numbers in the string argument and store them in the stack.
 	if (ac == 2)
 	{
@@ -49,19 +47,21 @@ int	main(int ac, char *av[])
 	}
 	// If there are more than 2 arguments, fill the stack with numbers from the arguments.
 	else if (ac > 2)
+	{
 		fill_stack(ac, av, stack_a);
-	// Initialize a count variable to 0.
-	count = 0;
-	// Iterate through the elements in stack_a and increment the count variable.
-	while (count < stack_a->index)
-		 count++;
+	}
+// follia pura 
+
+
+
+// // follia pura
 	// If there are 2 elements in the stack, print a message indicating this.
-	if (count == 2)
+	if (stack_a->index == 2)
 		sort_due(stack_a);
 	// If there are 3 elements in the stack, print a message indicating this.
-	if (count  == 3)
+	if (stack_a->index == 3)
 		sort_tre(stack_a);
-	else if (count > 3)
+	else if (stack_a->index  > 3)
 		sort_stack(stack_a);
 	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(stack_a);

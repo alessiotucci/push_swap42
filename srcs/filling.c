@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/05 12:29:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 15:26:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	split_num_in_stack(char *number, t_stack *stack)
     char    **input_number;
 
     // split the string into individual numbers and store them in input_number array
-    input_number = ft_split(number, ' ');
+	input_number = ft_split(number, ' ');
+	if (correct_char(number) == 0)
+		return ;
 
     // loop through the array of input numbers, converting each string to integer and storing them in the linked list
     while (input_number[count])
@@ -56,6 +58,7 @@ void	split_num_in_stack(char *number, t_stack *stack)
 
     // free the memory allocated for the input_number array
     free(input_number);
+	return ;
 }
 
 //This function fills the stack_a array with integers given as arguments to the program
@@ -67,7 +70,9 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
 	arg_index = 1;
     while (arg_index < ac)
     {
-        input_numbers = ft_split(av[arg_index], ' ');
+        if (correct_char(av[arg_index]) == 0)
+			return ;
+		input_numbers = ft_split(av[arg_index], ' ');
         int num_index = 0;
         while (input_numbers[num_index])
         {
@@ -133,7 +138,7 @@ int	correct_char(char *str)
 		if ((str[i] != '-' && str[i] != ' ') // Check if character is not '-' or space
 			&& (!(str[i] >= '0' && str[i] <= '9'))) // Check if character is not a digit
 		{
-			ft_printf("ERRORE: sei un cojone\n"); // Print error message if character is invalid
+			ft_printf("\t\t\tERRORE\n"); // Print error message if character is invalid
 			return (0);
 		}
 		i++;
