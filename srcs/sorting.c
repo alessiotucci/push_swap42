@@ -6,20 +6,20 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 12:40:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 13:50:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-void	sort_due(t_stack *stk)
+void	sort_due(t_stack **stk)
 {
 	// If the first element in stack_a is greater than or equal to the second element,
 	// swap the first two elements and increment the count
 	//if (!(stk->stack_a[0] < stk->stack_a[1]))
-	if (is_sorted(stk) == 0)
-		sa(&stk, 0);
+	if (is_sorted(*stk) == 0)
+		sa(stk, 0);
 	return ;
 }
 
@@ -94,8 +94,8 @@ void	sort_stack(t_stack *stk)
 // I need to check if the stack b is sorted in decresing order
 	if (stk->lb <= 2 && is_B_sorted(stk) == 1)
 		pa(stk);
-*/
-	if (stk)
+
+*/	if (stk)
 	ft_printf("algoritmo generale di sorting:");
 	return ;
 }
