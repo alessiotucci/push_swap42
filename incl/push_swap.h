@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 12:50:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:05:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ void	rb(t_stack *stk);
 void	rr(t_stack *stk);
 void	rra(t_stack **stk, int j);
 void	rrb(t_stack *stk);
-void	sort_due(t_stack *stk);
+void	sort_due(t_stack **stk);
 void	sort_tre(t_stack **stk);
 void	print_stack(t_stack **stk);
-void	sort_stack(t_stack *stk);
+void	sort_stack(t_stack **stk);
 int		is_B_sorted(t_stack *stk);
 int		is_sorted(t_stack *stk);
 int		find_small(t_stack *stk, int *pos);
 void	testa_toro(t_stack **stack);
 int		get_list_length(t_stack *head);
 t_stack	*ft_lstlasty(t_stack *lst);
+void update_indexes(t_stack *stack);
 #endif

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 13:50:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:09:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	sort_due(t_stack **stk)
 	//if (!(stk->stack_a[0] < stk->stack_a[1]))
 	if (is_sorted(*stk) == 0)
 		sa(stk, 0);
+ 	update_indexes(*stk);
 	return ;
 }
 
@@ -61,43 +62,42 @@ void sort_tre(t_stack **stk)
         a = (*stk)->nbr;
         b = (*stk)->next->nbr;
         c = (*stk)->next->next->nbr;
-    }
+    	update_indexes(*stk);
+	}
 }
 
-void	sort_stack(t_stack *stk)
+void	sort_stack(t_stack **stk)
 {
-/*	int pos;
+	int	pos;
 	int nb;
-
+	//mallocing for stack B (?)
+	t_stack *stack_b = malloc(sizeof(t_stack));
+	
 	if (stk)
-	ft_printf("I am working on it\n");
-	// while the stack  is not sorted
-	if (is_sorted(stk) == 1)
-	{
-		ft_printf("already sorted\n");
-		return ;
-	}
-	while (is_sorted(stk) == 0)
-	{
-	nb = find_small(stk, &pos);
-	//ft_printf("the smallest int is: %d\n", nb);
-	if (stk->stack_a[0] == nb)
-	{
-		pb(stk);
-		//stack->lb++;
-	}
-	else 
-		rra(stk);
-	// there is room for improvement;
-	}
-// at this point i need to empty the stack b if the stack a is sorted.
-// I need to check if the stack b is sorted in decresing order
-	if (stk->lb <= 2 && is_B_sorted(stk) == 1)
-		pa(stk);
+		ft_printf("I am sorting ...\n");
 
-*/	if (stk)
-	ft_printf("algoritmo generale di sorting:");
-	return ;
+	//while  the stack is  not sorted
+	while (is_sorted(*stk) == 0)
+	{
+		nb = find_small(*stk, &pos);
+	// if the smallest number is already at the top
+		if (nb == (*stk)->nbr)
+			pb(stk, &stack_b, 0);
+		else
+		{
+			//determine whether to rotate or reverse rotate
+			if (pos <= (get_list_length(*stk) / 2))
+				ra(stk, 0);
+			else
+				rra(stk, 0);
+		}
+
+	}
+	// at this point, stack A is sorted, stack B is sorted 
+	
+	if (stk)
+		ft_printf("\033[32m%s\033[0m\n", "sorting completed\n");
+
 }
 
 int	is_sorted(t_stack *stk)
