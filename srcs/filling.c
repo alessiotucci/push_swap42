@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 15:26:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 16:02:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,12 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
             }
             num_index++;
         }
-        free(input_numbers);
+		free(input_numbers);
         arg_index++;
     }
-
+	ft_printf("prima di tagliare la testa al toro\n");
+	print_stack(stack);
+	return ;
 }
 
 /*

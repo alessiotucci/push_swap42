@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 17:08:10 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 16:49:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void pb(t_stack **stack_a, t_stack **stack_b, int j)
 }
 
 // Function to swap the first two elements in Stack A
+
 void sa(t_stack **a, int j)
 {
 	t_stack	*tmp;

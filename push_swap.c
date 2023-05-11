@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 15:41:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 16:28:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ int	main(int ac, char *av[])
 
 // // follia pura
 	// If there are 2 elements in the stack, print a message indicating this.
-	if (stack_a->index == 2)
+	if (stack_a->index ==  1 || ac == 3)
 		sort_due(stack_a);
 	// If there are 3 elements in the stack, print a message indicating this.
-	if (stack_a->index == 3)
+	if (stack_a->index == 2)
 		sort_tre(stack_a);
-	else if (stack_a->index  > 3)
+	else if (stack_a->index  > 2)
 		sort_stack(stack_a);
 	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(stack_a);

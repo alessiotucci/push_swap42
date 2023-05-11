@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 15:39:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/09 16:25:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	sort_due(t_stack *stk)
 }
 
 void	sort_tre(t_stack *stk)
-{ /*
-	// Continue until the first three elements of stack_a are in ascending order
+{
+/*	// Continue until the first three elements of stack_a are in ascending order
 	while (!(stk->stack_a[0] < stk->stack_a[1]
 			&& stk->stack_a[1] < stk->stack_a[2]))
 	{
@@ -66,7 +66,7 @@ void	sort_tre(t_stack *stk)
 	// Print the number of moves made
 	ft_printf("I did it at least 2  moves\n");
 	return ;
-*/	if (stk)
+ */   if (stk)
 	ft_printf("i have no time");
 	return ;
 }
@@ -122,28 +122,25 @@ return (1); // sorted :)
 
 int	find_small(t_stack *stk, int *pos)
 {
-/*
-	int small;
-	int	count;
+    int small;
+    int count;
 
-	count = 0;
-	*pos = 0;
-	small = stk->stack_a[0];
-	while (count < stk->la)
-	{
-		if (stk->stack_a[count] < small) // if it's smaller than the one I already have...
-		{
-			small = stk->stack_a[count]; // we update the small variables
-			*pos = count;
-		}
-		count++;
-	}
+    count = 0;
+    *pos = 0;
+    small = stk->next->nbr; // Set small to the first element in the list
+    t_stack *current_node = stk->next;
+    while (current_node != NULL)
+    {
+        if (current_node->nbr < small) // if it's smaller than the one I already have...
+        {
+            small = current_node->nbr; // we update the small variable
+            *pos = count;
+        }
+        current_node = current_node->next;
+        count++;
+    }
 
-	return (small);
-*/
-	if (stk && pos)
-		ft_printf("ciao");
-	return (0);
+    return (small);
 }
 
 void testa_toro(t_stack **stack)
