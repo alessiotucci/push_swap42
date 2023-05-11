@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 16:02:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:58:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
         arg_index++;
     }
 	ft_printf("prima di tagliare la testa al toro\n");
-	print_stack(stack);
+	print_stack(&stack);
 	return ;
 }
 
@@ -148,12 +148,15 @@ int	correct_char(char *str)
 	return (1); // Return 1 if all characters are valid integers or '-'.
 }
 
-
-void	print_stack(t_stack *stk)
+void	print_stack(t_stack **stk)
 {
-	while (stk != NULL) // Loop through the LIST
+	t_stack	*tmp;
+
+	tmp = *stk;
+	while (tmp != NULL) // Loop through the LIST
 	{
-		ft_printf(" [%d]  %d\n", stk->index, stk->nbr); // Print each value of stack_a
-		stk = stk->next;
+		ft_printf(" [%d]  %d\n", tmp->index, tmp->nbr); // Print each value of stack_a
+		tmp = tmp->next;
 	}
 }
+

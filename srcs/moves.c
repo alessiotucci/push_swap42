@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/09 16:49:50 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 12:37:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,12 @@ void sa(t_stack **a, int j)
 
 	if (!*a || !((*a)->next))
 		return ;
-	tmp = (*a)->next;
-	(*a)->next = tmp->next;
-	if (tmp->next)
-		tmp->next->prev = *a;
-	tmp->next = *a;
-	tmp->prev = (*a)->prev;
-	(*a)->prev = tmp;
-	*a = tmp;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
 	if (j == 0)
 		write(1, "sa\n", 3);
-
 }
 
 // Function to swap the first two elements in Stack B

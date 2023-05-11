@@ -6,33 +6,30 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/03 17:17:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 12:53:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-// Function to rotate stack A
-void ra(t_stack *stk)
+// ra (rotate a) : shift up all elements of stack a by 1. 
+// The first element becomes the last one.
+void	ra(t_stack **a, int j)
 {
-/*
-	int tmp;
-	int i;
+	t_stack	*tmp;
 
-	i = 0;
-	if (stk->la < 2) // if there's only one element or less in stack A, return
+	if (!*a || !(*a)->next)
 		return ;
-	tmp = stk->stack_a[0]; // save the first element of stack A
-	while (i < stk->la - 1) // shift every element one position to the left
-	{
-		stk->stack_a[i] = stk->stack_a[i + 1];
-		i++;
-	}
-	stk->stack_a[i] = tmp; // place the saved element at the end of the stack
-*/if (stk)
-	write(1, "ra\n", 3); // print "ra" to standard output
+	tmp = *a;
+	*a = ft_lstlasty(*a);
+	(*a)->next = tmp;
+	*a = tmp->next;
+	tmp->next = NULL;
+	if (j == 0)
+		write(1, "ra\n", 3);
 }
+
 
 // Function to rotate stack B
 void rb(t_stack *stk)
@@ -84,21 +81,31 @@ void rr(t_stack *stk)
 }
 
 // Function to reverse rotate stack A
-void rra(t_stack *stk)
+// rra (reverse rotate a) : shift down all elements of stack a by 1. 
+// The last element becomes the first one.
+void	rra(t_stack **a, int j)
 {
-/*	int tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
-	i = stk->la - 1;
-	tmp = stk->stack_a[i]; // save the last element of stack A
-	while (i > 0) // shift every element one position to the right
+	if (!*a || !(*a)->next)
+		return ;
+	i = 0;
+	tmp = *a;
+	while ((*a)->next)
 	{
-		stk->stack_a[i] = stk->stack_a[i - 1];
+		*a = (*a)->next;
+		i++;
+	}
+	(*a)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
 		i--;
 	}
-	stk->stack_a[0] = tmp; // place the saved element at the beginning of stack A
-*/if (stk)
-	write(1, "rra\n", 4); // print "rra" to standard output
+	tmp->next = NULL;
+	if (j == 0)
+		write(1, "rra\n", 4);
 }
 
 
@@ -118,3 +125,17 @@ void rrb(t_stack *stk)
 */if (stk)
 	write(1, "rrb\n", 4); // print the name of the operation to stdout
 }
+
+t_stack	*ft_lstlasty(t_stack *lst)
+{
+	// check the list first
+	if (lst == NULL)
+		return (NULL);
+
+	// traverse the list backwards until we reach the last element
+	while (lst->prev != NULL)
+		lst = lst->prev;
+
+	return (lst);
+}
+
