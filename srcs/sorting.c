@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 15:09:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/11 16:33:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ void	sort_stack(t_stack **stk)
 	//while  the stack is  not sorted
 	while (is_sorted(*stk) == 0)
 	{
+		update_indexes(*stk);
 		nb = find_small(*stk, &pos);
 	// if the smallest number is already at the top
-		if (nb == (*stk)->nbr)
+		if (nb == (*stk)->nbr && pos == 1)
+			sa(stk, 0);
+		else if (nb == (*stk)->nbr && pos == 0)
 			pb(stk, &stack_b, 0);
 		else
 		{
@@ -94,7 +97,7 @@ void	sort_stack(t_stack **stk)
 
 	}
 	// at this point, stack A is sorted, stack B is sorted 
-	
+
 	if (stk)
 		ft_printf("\033[32m%s\033[0m\n", "sorting completed\n");
 
@@ -116,23 +119,22 @@ return (1); // sorted :)
 int	find_small(t_stack *stk, int *pos)
 {
     int small;
-    int count;
+	t_stack *current_node;
 
-    count = 0;
     *pos = 0;
-    small = stk->next->nbr; // Set small to the first element in the list
-    t_stack *current_node = stk->next;
+    small = stk->nbr; // Set small to the first element in the list
+    current_node = stk;
     while (current_node != NULL)
     {
-        if (current_node->nbr < small) // if it's smaller than the one I already have...
+        
+		if (current_node->nbr < small) // if it's smaller than the one I already have...
         {
             small = current_node->nbr; // we update the small variable
-            *pos = count;
+            *pos = current_node->index;
         }
         current_node = current_node->next;
-        count++;
     }
-
+	printf("smallest number\tfound at [%d]\tnumber:%d\t\n", *pos, small);
     return (small);
 }
 
