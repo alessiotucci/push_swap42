@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 11:58:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/12 16:43:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 #include "../incl/push_swap.h"
 
 //This function takes a string of numbers as input and splits them into separate integers to store in stack_a
-void	split_num_in_stack(char *number, t_stack *stack)
+
+t_stack	*split_num_in_stack(char *number)
 {
     int     count = 0;
     char    **input_number;
-
+    
     // split the string into individual numbers and store them in input_number array
-	input_number = ft_split(number, ' ');
-	if (correct_char(number) == 0)
-		return ;
+    input_number = ft_split(number, ' ');
+    if (correct_char(number) == 0)
+        return NULL;
 
+    // create a new linked list
+    t_stack *stack = NULL;
+    
     // loop through the array of input numbers, converting each string to integer and storing them in the linked list
     while (input_number[count])
     {
         // create a new node for the linked list
         t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
         if (!new_node)
-            return ;
+            return NULL;
 
         // fill up the node with the integer value, index and pointers to next and previous nodes
         new_node->nbr = ft_atoi(input_number[count]);
@@ -39,16 +43,17 @@ void	split_num_in_stack(char *number, t_stack *stack)
         new_node->prev = NULL;
 
         // add the node to the end of the linked list
-        if (!stack->next)
+        if (!stack)
         {
-            stack->next = new_node;
-            stack->prev = new_node;
+            stack = new_node;
         }
         else
         {
-            new_node->prev = stack->prev;
-            stack->prev->next = new_node;
-            stack->prev = new_node;
+            t_stack *last_node = stack;
+            while (last_node->next)
+                last_node = last_node->next;
+            last_node->next = new_node;
+            new_node->prev = last_node;
         }
 
         //print the current integer value and its index
@@ -58,21 +63,22 @@ void	split_num_in_stack(char *number, t_stack *stack)
 
     // free the memory allocated for the input_number array
     free(input_number);
-	return ;
+
+    // return a pointer to the head of the linked list
+    return stack;
 }
 
-//This function fills the stack_a array with integers given as arguments to the program
-void	fill_stack(int ac, char *av[], t_stack *stack)
+
+t_stack	*fill_stack(int ac, char **av)
 {
-	char **input_numbers;
-	int arg_index;
+	t_stack *stack = NULL;
 	
-	arg_index = 1;
+	int arg_index = 1;
     while (arg_index < ac)
     {
         if (correct_char(av[arg_index]) == 0)
-			return ;
-		input_numbers = ft_split(av[arg_index], ' ');
+			return NULL;
+		char **input_numbers = ft_split(av[arg_index], ' ');
         int num_index = 0;
         while (input_numbers[num_index])
         {
@@ -80,17 +86,21 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
             if (!new_node)
                 exit(1);
             new_node->nbr = ft_atoi(input_numbers[num_index]);
-            new_node->index = stack->index++;
-            new_node->next = NULL;
+            // improved by ternaries
+			if (stack != NULL) 
+			new_node->index = stack->index++
+	else
+new_node->index = 0;
+			// 
+			new_node->next = NULL;
             new_node->prev = NULL;
-            if (!stack->next)
+            if (!stack)
             {
-                stack->next = new_node;
-                new_node->prev = stack;
+                stack = new_node;
             }
             else
             {
-                t_stack *last_node = stack->next;
+                t_stack *last_node = stack;
                 while (last_node->next)
                     last_node = last_node->next;
                 last_node->next = new_node;
@@ -101,10 +111,9 @@ void	fill_stack(int ac, char *av[], t_stack *stack)
 		free(input_numbers);
         arg_index++;
     }
-	ft_printf("prima di tagliare la testa al toro\n");
-	print_stack(&stack);
-	return ;
+    return stack;
 }
+
 
 /*
 ** This function counts the number of integers in a string, delimited by spaces.

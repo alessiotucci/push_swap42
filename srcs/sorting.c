@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 16:33:52 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/12 12:25:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,15 @@ void	sort_stack(t_stack **stk)
 	t_stack *stack_b = malloc(sizeof(t_stack));
 	
 	if (stk)
-		ft_printf("I am sorting ...\n");
+		ft_printf("\033[33mI am sorting the stack...\033[0m\n");
 
 	//while  the stack is  not sorted
-	while (is_sorted(*stk) == 0)
+	while (is_sorted(*stk) == 0 && (get_list_length(*stk) > get_list_length(stack_b)))
 	{
 		update_indexes(*stk);
 		nb = find_small(*stk, &pos);
 	// if the smallest number is already at the top
+	// check the if statement here
 		if (nb == (*stk)->nbr && pos == 1)
 			sa(stk, 0);
 		else if (nb == (*stk)->nbr && pos == 0)
@@ -97,10 +98,17 @@ void	sort_stack(t_stack **stk)
 
 	}
 	// at this point, stack A is sorted, stack B is sorted 
-
+	
+	printf("THIS IS THE STACK B\n");
+	testa_toro(&stack_b);
+	update_indexes(stack_b);
+	print_stack(&stack_b);
+	//
+	//while (stack_b)
+	//	pa(&stack_b, stk, 0);
 	if (stk)
 		ft_printf("\033[32m%s\033[0m\n", "sorting completed\n");
-
+		update_indexes(*stk);
 }
 
 int	is_sorted(t_stack *stk)
