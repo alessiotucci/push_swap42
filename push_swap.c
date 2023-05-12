@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 14:21:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/12 16:39:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,25 @@ int get_list_length(t_stack *head)
 int	main(int ac, char *av[])
 {
 	// Declare a stack variable, I am working  with node of list.
-	t_stack *stack_a = malloc(sizeof(t_stack));
-	stack_a->nbr = 0;
+	t_stack *stack_a = NULL; // = malloc(sizeof(t_stack));
+/*	stack_a->nbr = 0;
 	stack_a->index = 0;
 	stack_a->next = NULL;
-	stack_a->prev = NULL;
+	stack_a->prev = NULL;*/
+
 	int	len;
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
 		return(ft_printf("\tsei\tun\tcojone\n"));
 	// If there are exactly 2 arguments, split the numbers in the string argument and store them in the stack.
 	if (ac == 2)
-		split_num_in_stack(av[1], stack_a);
+		stack_a = split_num_in_stack(av[1]);
 	// If there are more than 2 arguments, fill the stack with numbers from the arguments.
 	else if (ac > 2)
-		fill_stack(ac, av, stack_a);
+		stack_a = fill_stack(ac, av);
 // TAGLIARE LA TESTA AL  TORO
-	testa_toro(&stack_a);
+//	testa_toro(&stack_a);
+	print_stack(&stack_a);
 	len = get_list_length(stack_a);
 // If there are 2 elements in the stack, print a message indicating this.
 	if (len == 2)

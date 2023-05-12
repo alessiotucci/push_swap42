@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 15:05:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/12 16:20:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_stack
 int		len_stack_a(char *str);
 int		correct_char(char *str);
 int		check_stack(t_stack *stk);
-void	split_num_in_stack(char *number,t_stack *stack);
-void	fill_stack(int ac, char *av[], t_stack *stack);
+t_stack	*split_num_in_stack(char *number);
+t_stack	*fill_stack(int ac, char **av);
 void	pa(t_stack **a, t_stack **b, int j);
 void	pb(t_stack **stack_a, t_stack **stack_b, int j);
 void	sa(t_stack **a, int j);
