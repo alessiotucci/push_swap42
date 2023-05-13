@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/13 14:27:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,62 +17,62 @@
 
 t_stack	*split_num_in_stack(char *number)
 {
-    int     count = 0;
-    char    **input_number;
-    
-    // split the string into individual numbers and store them in input_number array
-    input_number = ft_split(number, ' ');
-    if (correct_char(number) == 0)
-        return NULL;
+	int		count = 0;
+	char	**input_number;
 
-    // create a new linked list
-    t_stack *stack = NULL;
-    
-    // loop through the array of input numbers, converting each string to integer and storing them in the linked list
-    while (input_number[count])
-    {
-        // create a new node for the linked list
-        t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
-        if (!new_node)
-            return NULL;
+	// split the string into individual numbers and store them in input_number array
+	input_number = ft_split(number, ' ');
+	if (correct_char(number) == 0)
+		return NULL;
 
-        // fill up the node with the integer value, index and pointers to next and previous nodes
-        new_node->nbr = ft_atoi(input_number[count]);
-        new_node->index = count;
-        new_node->next = NULL;
-        new_node->prev = NULL;
+	// create a new linked list
+	t_stack *stack = NULL;
 
-        // add the node to the end of the linked list
-        if (!stack)
-        {
-            stack = new_node;
-        }
-        else
-        {
-            t_stack *last_node = stack;
-            while (last_node->next)
-                last_node = last_node->next;
-            last_node->next = new_node;
-            new_node->prev = last_node;
-        }
+	// loop through the array of input numbers, converting each string to integer and storing them in the linked list
+	while (input_number[count])
+	{
+		// create a new node for the linked list
+		t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
+		if (!new_node)
+			return NULL;
 
-        //print the current integer value and its index
-        ft_printf("Stack A [%d]: %d\n", count, new_node->nbr);
-        count++;
-    }
+		// fill up the node with the integer value, index and pointers to next and previous nodes
+		new_node->nbr = ft_atoi(input_number[count]);
+		new_node->index = count;
+		new_node->next = NULL;
+		new_node->prev = NULL;
 
-    // free the memory allocated for the input_number array
-    free(input_number);
+		// add the node to the end of the linked list
+		if (!stack)
+		{
+			stack = new_node;
+		}
+		else
+		{
+			t_stack *last_node = stack;
+			while (last_node->next)
+				last_node = last_node->next;
+			last_node->next = new_node;
+			new_node->prev = last_node;
+		}
 
-    // return a pointer to the head of the linked list
-    return stack;
+		//print the current integer value and its index
+		ft_printf("Stack A [%d]: %d\n", count, new_node->nbr);
+		count++;
+	}
+
+	// free the memory allocated for the input_number array
+	free(input_number);
+
+	// return a pointer to the head of the linked list
+	return stack;
 }
 
 
 t_stack	*fill_stack(int ac, char **av)
 {
 	t_stack *stack = NULL;
-	
+
 	int arg_index = 1;
     while (arg_index < ac)
     {
@@ -87,11 +87,11 @@ t_stack	*fill_stack(int ac, char **av)
                 exit(1);
             new_node->nbr = ft_atoi(input_numbers[num_index]);
             // improved by ternaries
-			if (stack != NULL) 
-			new_node->index = stack->index++
+			if (stack != NULL)
+			new_node->index = stack->index++;
 	else
 new_node->index = 0;
-			// 
+			//
 			new_node->next = NULL;
             new_node->prev = NULL;
             if (!stack)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/12 12:25:50 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/13 14:36:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,11 @@ void	sort_stack(t_stack **stk)
 	int nb;
 	//mallocing for stack B (?)
 	t_stack *stack_b = malloc(sizeof(t_stack));
-	
-	if (stk)
-		ft_printf("\033[33mI am sorting the stack...\033[0m\n");
+
+	ft_printf("\033[33mI am sorting the stack...\033[0m\n");
 
 	//while  the stack is  not sorted
-	while (is_sorted(*stk) == 0 && (get_list_length(*stk) > get_list_length(stack_b)))
+	while (is_sorted(*stk) == 0) //&& (get_list_length(*stk) > get_list_length(stack_b)))
 	{
 		update_indexes(*stk);
 		nb = find_small(*stk, &pos);
@@ -97,10 +96,10 @@ void	sort_stack(t_stack **stk)
 		}
 
 	}
-	// at this point, stack A is sorted, stack B is sorted 
-	
+	// at this point, stack A is sorted, stack B is sorted
+
 	printf("THIS IS THE STACK B\n");
-	testa_toro(&stack_b);
+	//testa_toro(&stack_b);
 	update_indexes(stack_b);
 	print_stack(&stack_b);
 	//
@@ -134,7 +133,7 @@ int	find_small(t_stack *stk, int *pos)
     current_node = stk;
     while (current_node != NULL)
     {
-        
+
 		if (current_node->nbr < small) // if it's smaller than the one I already have...
         {
             small = current_node->nbr; // we update the small variable
