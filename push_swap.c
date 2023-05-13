@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/12 16:39:22 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/13 16:55:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char *av[])
 		stack_a = fill_stack(ac, av);
 // TAGLIARE LA TESTA AL  TORO
 //	testa_toro(&stack_a);
+	update_indexes(stack_a);
 	print_stack(&stack_a);
 	len = get_list_length(stack_a);
 // If there are 2 elements in the stack, print a message indicating this.

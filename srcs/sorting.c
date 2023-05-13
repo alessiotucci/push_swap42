@@ -6,33 +6,35 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/13 14:36:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/13 17:46:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-void	sort_due(t_stack **stk)
+void	sort_due(t_stack **stack_a)
 {
 	// If the first element in stack_a is greater than or equal to the second element,
 	// swap the first two elements and increment the count
-	//if (!(stk->stack_a[0] < stk->stack_a[1]))
-	if (is_sorted(*stk) == 0)
-		sa(stk, 0);
- 	update_indexes(*stk);
+	//if (!(stack_a->stack_a[0] < stack_a->stack_a[1]))
+	ft_printf("I am sorting 2\n");
+	if (is_sorted(*stack_a) == 0)
+		sa(stack_a, 0);
+ 	update_indexes(*stack_a);
 	return ;
 }
 
-void sort_tre(t_stack **stk)
+void sort_tre(t_stack **stack_a)
 {
+		ft_printf("I am sorting 3\n");
     // If the stack has less than three nodes, return without doing anything
-    if (!*stk || !(*stk)->next || !(*stk)->next->next)
+    if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
         return;
 
-    int a = (*stk)->nbr;
-    int b = (*stk)->next->nbr;
-    int c = (*stk)->next->next->nbr;
+    int a = (*stack_a)->nbr;
+    int b = (*stack_a)->next->nbr;
+    int c = (*stack_a)->next->next->nbr;
 
     // Continue until the first three elements of the stack are in ascending order
     while (!(a < b && b < c))
@@ -40,79 +42,90 @@ void sort_tre(t_stack **stk)
         // If the second element is less than the first and less than the third,
         // swap the first two elements
         if (b < a && a < c)
-            sa(stk, 0);
+            sa(stack_a, 0);
         // If the third element is less than the second and less than the first,
         // swap the first two elements
         else if (c < b && b < a)
-            sa(stk, 0);
+            sa(stack_a, 0);
         // If the first element is less than the third and the third is less than the second,
         // swap the first and the third elements
         else if (a < c && c < b)
-            rra(stk, 0);
+            rra(stack_a, 0);
         // If the second element is less than the third and the third is less than the first,
         // rotate the stack so that the second element becomes the first
         else if (b < c && c < a)
-            ra(stk, 0);
+            ra(stack_a, 0);
         // If the third element is less than the first and the first is less than the second,
         // rotate the stack so that the last element becomes the first
         else if (c < a && a < b)
-            rra(stk, 0);
+            rra(stack_a, 0);
 
         // Update the values of a, b, and c
-        a = (*stk)->nbr;
-        b = (*stk)->next->nbr;
-        c = (*stk)->next->next->nbr;
-    	update_indexes(*stk);
+        a = (*stack_a)->nbr;
+        b = (*stack_a)->next->nbr;
+        c = (*stack_a)->next->next->nbr;
+    	update_indexes(*stack_a);
 	}
 }
 
-void	sort_stack(t_stack **stk)
+void	sort_stack(t_stack **stack_a)
 {
 	int	pos;
 	int nb;
+	int moves;
+	int count;
 	//mallocing for stack B (?)
-	t_stack *stack_b = malloc(sizeof(t_stack));
-
+	t_stack *stack_b = NULL;
+	count = 0;
 	ft_printf("\033[33mI am sorting the stack...\033[0m\n");
 
 	//while  the stack is  not sorted
-	while (is_sorted(*stk) == 0) //&& (get_list_length(*stk) > get_list_length(stack_b)))
+	while (is_sorted(*stack_a) == 0)
 	{
-		update_indexes(*stk);
-		nb = find_small(*stk, &pos);
-	// if the smallest number is already at the top
-	// check the if statement here
-		if (nb == (*stk)->nbr && pos == 1)
-			sa(stk, 0);
-		else if (nb == (*stk)->nbr && pos == 0)
-			pb(stk, &stack_b, 0);
-		else
+		nb = find_small(*stack_a, &pos); // looking for the smallest number
+		moves = get_moves_to_top(*stack_a, pos);
+		while (count < moves)
 		{
-			//determine whether to rotate or reverse rotate
-			if (pos <= (get_list_length(*stk) / 2))
-				ra(stk, 0);
+			if (pos < get_list_length(*stack_a) / 2)
+				ra(stack_a, 0);
 			else
-				rra(stk, 0);
+				rra(stack_a, 0);
+			count++;
 		}
+	pb(stack_a, &stack_b, 0); // pushing the smallest number to stack B
+	//
+	//
+	printf("``````````````````\nthis is the stack b\n");
+	print_stack(&stack_b);
+	printf("``````````````````\nthis is the stack a\n");
+		update_indexes(*stack_a);
+		print_stack(stack_a);
+	//
+	update_indexes(*stack_a);
+	if (get_list_length(*stack_a) == 2)
+		sort_due(stack_a);
+	else if (get_list_length(*stack_a) == 3)
+		sort_tre(stack_a);
+	ft_printf("\033[33m INfinite LOOPs fuck issie with the stack b goddamet\033[0m\n");
+	//ft_printf("the lenght of the stack b should  be %d\n", get_list_length(stack_b));
+	while (is_empty(&stack_b) != 0)
+		pa(&stack_b, stack_a, 0);
+
 
 	}
 	// at this point, stack A is sorted, stack B is sorted
 
-	printf("THIS IS THE STACK B\n");
+	printf("THIS IS THE STACK b finally empty\n");
 	//testa_toro(&stack_b);
-	update_indexes(stack_b);
-	print_stack(&stack_b);
-	//
-	//while (stack_b)
-	//	pa(&stack_b, stk, 0);
-	if (stk)
+	//update_indexes(stack_b);
+	//print_stack(&stack_b);
+		update_indexes(*stack_a);
 		ft_printf("\033[32m%s\033[0m\n", "sorting completed\n");
-		update_indexes(*stk);
 }
 
-int	is_sorted(t_stack *stk)
+int	is_sorted(t_stack *stack_a)
 {
-	t_stack *current = stk;
+	t_stack *current = stack_a;
 
 	while (current != NULL && current->next != NULL)
 	{
@@ -123,14 +136,14 @@ int	is_sorted(t_stack *stk)
 return (1); // sorted :)
 }
 
-int	find_small(t_stack *stk, int *pos)
+int	find_small(t_stack *stack_a, int *pos)
 {
     int small;
 	t_stack *current_node;
 
     *pos = 0;
-    small = stk->nbr; // Set small to the first element in the list
-    current_node = stk;
+    small = stack_a->nbr; // Set small to the first element in the list
+    current_node = stack_a;
     while (current_node != NULL)
     {
 
@@ -141,7 +154,7 @@ int	find_small(t_stack *stk, int *pos)
         }
         current_node = current_node->next;
     }
-	printf("smallest number\tfound at [%d]\tnumber:%d\t\n", *pos, small);
+	printf("smallest number\tfound\n");
     return (small);
 }
 
@@ -156,3 +169,26 @@ void testa_toro(t_stack **stack)
 		free(temp);
 }
 
+int get_moves_to_top(t_stack *stack, int index)
+{
+    int size = get_list_length(stack);
+    int moves = 0;
+
+    if (index == 0) // element is already at the top
+	return 0;
+// calculate the number of moves needed to bring the element to the top
+    if (index <= size / 2)
+	// element is in the first half of the stack
+		moves = index;
+	else
+	// element is in the second half of the stack
+        moves = size - index;
+	return moves;
+}
+int is_empty(t_stack **stack)
+{
+	if ((*stack) == NULL)
+		return (0);
+	else
+		return (1);
+}

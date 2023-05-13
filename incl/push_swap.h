@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/12 16:20:12 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/13 17:25:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,15 @@ typedef struct s_stack
     struct s_stack *next;   // A pointer to the next node in the list
     struct s_stack *prev;   // A pointer to the previous node in the list
 } t_stack;
+/* matt isidore advices
+typedef struct s_stack
+{
+	int	size;
+	t_node	*node;
+}   t_stack
 
+t_stack	*stack_a;
+*/
 int		len_stack_a(char *str);
 int		correct_char(char *str);
 int		check_stack(t_stack *stk);
@@ -57,4 +65,6 @@ void	testa_toro(t_stack **stack);
 int		get_list_length(t_stack *head);
 t_stack	*ft_lstlasty(t_stack *lst);
 void update_indexes(t_stack *stack);
+int get_moves_to_top(t_stack *stack, int index);
+int is_empty(t_stack **stack);
 #endif
