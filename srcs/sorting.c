@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/13 17:46:36 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/14 18:00:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,42 +75,71 @@ void	sort_stack(t_stack **stack_a)
 	int moves;
 	int count;
 	//mallocing for stack B (?)
-	t_stack *stack_b = NULL;
+	t_stack **stack_b = (t_stack **)malloc(sizeof(t_stack *));
+	*stack_b = NULL;
 	count = 0;
 	ft_printf("\033[33mI am sorting the stack...\033[0m\n");
 
 	//while  the stack is  not sorted
 	while (is_sorted(*stack_a) == 0)
 	{
+	while (get_list_length(*stack_a) > 3)
+	{
 		nb = find_small(*stack_a, &pos); // looking for the smallest number
 		moves = get_moves_to_top(*stack_a, pos);
 		while (count < moves)
 		{
-			if (pos < get_list_length(*stack_a) / 2)
+			if (moves == 1)
+			{
+				sa(stack_a, 0);
+				update_indexes(*stack_a);
+				print_stack(stack_a);
+				break ;
+			}
+			if (pos < moves / 2)
+			{
 				ra(stack_a, 0);
+				update_indexes(*stack_a);
+				print_stack(stack_a);
+			}
 			else
+			{
 				rra(stack_a, 0);
+				update_indexes(*stack_a);
+				print_stack(stack_a);
+			}
 			count++;
 		}
-	pb(stack_a, &stack_b, 0); // pushing the smallest number to stack B
+	//while (get_list_legth(stack_a) > 3)
+	pb(stack_a, stack_b, 0); // pushing the smallest number to stack B
+	//update_indexes(*stack_a);
+	printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
+
+	}
 	//
 	//
-	printf("``````````````````\nthis is the stack b\n");
-	print_stack(&stack_b);
-	printf("``````````````````\nthis is the stack a\n");
-		update_indexes(*stack_a);
+	printf("``````````````````\n[this is the stack b]\n");
+ 	update_indexes(*stack_b);
+	print_stack(stack_b);
+	printf("``````````````````\n[this is the stack a]\n");
+	// update_indexes(*stack_a);
 		print_stack(stack_a);
 	//
 	update_indexes(*stack_a);
 	if (get_list_length(*stack_a) == 2)
 		sort_due(stack_a);
-	else if (get_list_length(*stack_a) == 3)
+	else if (get_list_length(*stack_a) == 3) //&& is_sorted(*stack_a) == 0)
 		sort_tre(stack_a);
-	ft_printf("\033[33m INfinite LOOPs fuck issie with the stack b goddamet\033[0m\n");
-	//ft_printf("the lenght of the stack b should  be %d\n", get_list_length(stack_b));
-	while (is_empty(&stack_b) != 0)
-		pa(&stack_b, stack_a, 0);
-
+	ft_printf("\033[33m INfinite LOOPs fuck\033[0m\n");
+	while(get_list_length(*stack_b) > 0)
+		{
+			ft_printf("this is the lenght of b {%d}\n", get_list_length(*stack_b));
+			pa(stack_a, stack_b, 0);
+			ft_printf("tHis Is tHe lengHt of b {%d}\n", get_list_length(*stack_b));
+			//
+			//printf("fuck Im out\n");
+			//exit(0);
+		}
 
 	}
 	// at this point, stack A is sorted, stack B is sorted
@@ -154,7 +183,7 @@ int	find_small(t_stack *stack_a, int *pos)
         }
         current_node = current_node->next;
     }
-	printf("smallest number\tfound\n");
+	printf("smallest number\t(%d)found at index [%d]\n", small, *pos);
     return (small);
 }
 
@@ -187,6 +216,7 @@ int get_moves_to_top(t_stack *stack, int index)
 }
 int is_empty(t_stack **stack)
 {
+	// try to  see where the issue is
 	if ((*stack) == NULL)
 		return (0);
 	else

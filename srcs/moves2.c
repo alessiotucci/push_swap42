@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 13:42:47 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/14 15:34:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-// ra (rotate a) : shift up all elements of stack a by 1. 
+// ra (rotate a) : shift up all elements of stack a by 1.
 // The first element becomes the last one.
 void	ra(t_stack **a, int j)
 {
@@ -81,7 +81,7 @@ void rr(t_stack *stk)
 }
 
 // Function to reverse rotate stack A
-// rra (reverse rotate a) : shift down all elements of stack a by 1. 
+// rra (reverse rotate a) : shift down all elements of stack a by 1.
 // The last element becomes the first one.
 void	rra(t_stack **a, int j)
 {
@@ -107,6 +107,7 @@ void	rra(t_stack **a, int j)
 	if (j == 0)
 		write(1, "rra\n", 4);
 }
+
 
 
 // This function rotates stack B downwards by one position
