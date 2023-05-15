@@ -87,5 +87,4 @@ int		check_sign_flags(const char *str, int i);
 int		pt_print_padding(char c, int width);
 int		check_formatting_flags(const char *str, int i);
 int		print_sign(int n);
-
 #endif 
