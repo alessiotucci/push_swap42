@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/14 15:34:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/15 12:48:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,25 @@
 
 // ra (rotate a) : shift up all elements of stack a by 1.
 // The first element becomes the last one.
-void	ra(t_stack **a, int j)
+void ra(t_stack **a, int j)
 {
-	t_stack	*tmp;
+    t_stack *tmp;
+    t_stack *first;
 
-	if (!*a || !(*a)->next)
-		return ;
-	tmp = *a;
-	*a = ft_lstlasty(*a);
-	(*a)->next = tmp;
-	*a = tmp->next;
-	tmp->next = NULL;
-	if (j == 0)
-		write(1, "ra\n", 3);
+    if (!*a || !(*a)->next)
+        return;
+    tmp = *a;
+    first = tmp;
+    *a = (*a)->next;
+    while (tmp->next)
+        tmp = tmp->next;
+    tmp->next = first;
+    first->next = NULL;
+    if (j == 0)
+        write(1, "ra\n", 3);
 }
+
+
 
 
 // Function to rotate stack B

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/14 18:00:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/15 12:51:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 void	sort_due(t_stack **stack_a)
 {
-	// If the first element in stack_a is greater than or equal to the second element,
-	// swap the first two elements and increment the count
-	//if (!(stack_a->stack_a[0] < stack_a->stack_a[1]))
+	// swap the first two elements if they are not sorted
 	ft_printf("I am sorting 2\n");
 	if (is_sorted(*stack_a) == 0)
 		sa(stack_a, 0);
@@ -27,7 +25,7 @@ void	sort_due(t_stack **stack_a)
 
 void sort_tre(t_stack **stack_a)
 {
-		ft_printf("I am sorting 3\n");
+		ft_printf("I AM SORTING: 3\n");
     // If the stack has less than three nodes, return without doing anything
     if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
         return;
@@ -83,20 +81,19 @@ void	sort_stack(t_stack **stack_a)
 	//while  the stack is  not sorted
 	while (is_sorted(*stack_a) == 0)
 	{
-	while (get_list_length(*stack_a) > 3)
-	{
+
 		nb = find_small(*stack_a, &pos); // looking for the smallest number
 		moves = get_moves_to_top(*stack_a, pos);
 		while (count < moves)
 		{
-			if (moves == 1)
+			/*if (moves == 1)
 			{
 				sa(stack_a, 0);
 				update_indexes(*stack_a);
 				print_stack(stack_a);
 				break ;
-			}
-			if (pos < moves / 2)
+			}*/
+			if (pos < get_list_length(*stack_a) / 2)
 			{
 				ra(stack_a, 0);
 				update_indexes(*stack_a);
@@ -110,12 +107,12 @@ void	sort_stack(t_stack **stack_a)
 			}
 			count++;
 		}
-	//while (get_list_legth(stack_a) > 3)
+	//while (get_list_legth(stack_a) > get_list)
 	pb(stack_a, stack_b, 0); // pushing the smallest number to stack B
 	//update_indexes(*stack_a);
 	printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
 
-	}
+
 	//
 	//
 	printf("``````````````````\n[this is the stack b]\n");
@@ -131,14 +128,15 @@ void	sort_stack(t_stack **stack_a)
 	else if (get_list_length(*stack_a) == 3) //&& is_sorted(*stack_a) == 0)
 		sort_tre(stack_a);
 	ft_printf("\033[33m INfinite LOOPs fuck\033[0m\n");
-	while(get_list_length(*stack_b) > 0)
+	while(is_empty(stack_b) != 0 )
 		{
 			ft_printf("this is the lenght of b {%d}\n", get_list_length(*stack_b));
 			pa(stack_a, stack_b, 0);
 			ft_printf("tHis Is tHe lengHt of b {%d}\n", get_list_length(*stack_b));
 			//
 			//printf("fuck Im out\n");
-			//exit(0);
+			if (get_list_length(*stack_b) == 0)
+			break ;
 		}
 
 	}
