@@ -113,7 +113,7 @@ void	sort_stack(t_stack **stack_a)
 		//while (get_list_legth(stack_a) > get_list)
 		pb(stack_a, stack_b, 0); // pushing the smallest number to stack B
 		update_indexes(*stack_a);
-		printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
+		//printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
 		conto = get_list_length(*stack_a);
 		}
 	//
@@ -136,7 +136,7 @@ void	sort_stack(t_stack **stack_a)
 		{
 			ft_printf("\033[1;36;43mtHiS  iS tHe lEnGht of staCk B {%d}!\033[0m\n", get_list_length(*stack_b));
 			pa(stack_a, stack_b, 0);
-			ft_printf("\033[1;36;43mtHiS  iS tHe lEnGht of staCk B {%d}!\033[0m\n", get_list_length(*stack_b));
+		//	ft_printf("\033[1;36;43mtHiS  iS tHe lEnGht of staCk B {%d}!\033[0m\n", get_list_length(*stack_b));
 			//
 			//printf("fuck Im out\n");
 			if (get_list_length(*stack_b) == 0)
@@ -146,7 +146,7 @@ void	sort_stack(t_stack **stack_a)
 	}
 	// at this point, stack A is sorted, stack B is sorted
 
-	printf("THIS IS THE STACK b finally empty\n");
+	//printf("THIS IS THE STACK b finally empty\n");
 	//testa_toro(&stack_b);
 	//update_indexes(stack_b);
 	//print_stack(&stack_b);
