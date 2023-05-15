@@ -72,47 +72,50 @@ void	sort_stack(t_stack **stack_a)
 	int nb;
 	int moves;
 	int count;
-	//mallocing for stack B (?)
+	int conto;//mallocing for stack B (?)
 	t_stack **stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	*stack_b = NULL;
-	count = 0;
+	//count = 0;
 	ft_printf("\033[33mI am sorting the stack...\033[0m\n");
 
 	//while  the stack is  not sorted
 	while (is_sorted(*stack_a) == 0)
 	{
-
-		nb = find_small(*stack_a, &pos); // looking for the smallest number
-		moves = get_moves_to_top(*stack_a, pos);
-		while (count < moves)
+		conto = get_list_length(*stack_a);// start with the while cicle
+		while (conto > 3)
 		{
-			/*if (moves == 1)
+			nb = find_small(*stack_a, &pos); // looking for the smallest number
+			moves = get_moves_to_top(*stack_a, pos);
+			count = 0;
+			while (count < moves)
 			{
-				sa(stack_a, 0);
-				update_indexes(*stack_a);
-				print_stack(stack_a);
-				break ;
-			}*/
-			if (pos < get_list_length(*stack_a) / 2)
-			{
-				ra(stack_a, 0);
-				update_indexes(*stack_a);
-				print_stack(stack_a);
+				/*if (moves == 1)
+				{
+					sa(stack_a, 0);
+					update_indexes(*stack_a);
+					print_stack(stack_a);
+					break ;
+				}*/
+				if (pos <= get_list_length(*stack_a) / 2)
+				{
+					ra(stack_a, 0);
+					update_indexes(*stack_a);
+					print_stack(stack_a);
+				}
+				else
+				{
+					rra(stack_a, 0);
+					update_indexes(*stack_a);
+					print_stack(stack_a);
+				}
+				count++;
 			}
-			else
-			{
-				rra(stack_a, 0);
-				update_indexes(*stack_a);
-				print_stack(stack_a);
-			}
-			count++;
+		//while (get_list_legth(stack_a) > get_list)
+		pb(stack_a, stack_b, 0); // pushing the smallest number to stack B
+		update_indexes(*stack_a);
+		printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
+		conto = get_list_length(*stack_a);
 		}
-	//while (get_list_legth(stack_a) > get_list)
-	pb(stack_a, stack_b, 0); // pushing the smallest number to stack B
-	//update_indexes(*stack_a);
-	printf("\033[1;34mJust pushed to the stack b\nstack A size should descrease\033[0m\n");
-
-
 	//
 	//
 	printf("``````````````````\n[this is the stack b]\n");
@@ -128,6 +131,7 @@ void	sort_stack(t_stack **stack_a)
 	else if (get_list_length(*stack_a) == 3) //&& is_sorted(*stack_a) == 0)
 		sort_tre(stack_a);
 	ft_printf("\033[33m INfinite LOOPs fuck\033[0m\n");
+	//exit(0);
 	while(is_empty(stack_b) != 0 )
 		{
 			ft_printf("this is the lenght of b {%d}\n", get_list_length(*stack_b));
