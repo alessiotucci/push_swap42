@@ -37,7 +37,7 @@ int	main(int ac, char *av[])
 	int	len;
 	// If there are less than 2 arguments, print an error message.
 	if (ac < 2)
-		return(ft_printf("\tsei\tun\tcojone\n"));
+		return(ft_printf("\033[0;31msei\tun cojone!\t\033[0m\n"));
 	// If there are exactly 2 arguments, split the numbers in the string argument and store them in the stack.
 	if (ac == 2)
 		stack_a = split_num_in_stack(av[1]);

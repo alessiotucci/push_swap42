@@ -25,8 +25,8 @@ void	sort_due(t_stack **stack_a)
 
 void sort_tre(t_stack **stack_a)
 {
-		ft_printf("I AM SORTING: 3\n");
-    // If the stack has less than three nodes, return without doing anything
+		ft_printf("\033[1;32;41mI am sorting 3!\033[0m\n");
+		// If the stack has less than three nodes, return without doing anything
     if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
         return;
 
@@ -130,13 +130,13 @@ void	sort_stack(t_stack **stack_a)
 		sort_due(stack_a);
 	else if (get_list_length(*stack_a) == 3) //&& is_sorted(*stack_a) == 0)
 		sort_tre(stack_a);
-	ft_printf("\033[33m INfinite LOOPs fuck\033[0m\n");
+	//ft_printf("\033[33m INfinite LOOPs fuck\033[0m\n");
 	//exit(0);
 	while(is_empty(stack_b) != 0 )
 		{
-			ft_printf("this is the lenght of b {%d}\n", get_list_length(*stack_b));
+			ft_printf("\033[1;36;43mtHiS  iS tHe lEnGht of staCk B {%d}!\033[0m\n", get_list_length(*stack_b));
 			pa(stack_a, stack_b, 0);
-			ft_printf("tHis Is tHe lengHt of b {%d}\n", get_list_length(*stack_b));
+			ft_printf("\033[1;36;43mtHiS  iS tHe lEnGht of staCk B {%d}!\033[0m\n", get_list_length(*stack_b));
 			//
 			//printf("fuck Im out\n");
 			if (get_list_length(*stack_b) == 0)
@@ -151,7 +151,7 @@ void	sort_stack(t_stack **stack_a)
 	//update_indexes(stack_b);
 	//print_stack(&stack_b);
 		update_indexes(*stack_a);
-		ft_printf("\033[32m%s\033[0m\n", "sorting completed\n");
+		ft_printf("\033[32m%s\033[0m\n", "SORTING COMPLETED :)\n");
 }
 
 int	is_sorted(t_stack *stack_a)
@@ -185,7 +185,7 @@ int	find_small(t_stack *stack_a, int *pos)
         }
         current_node = current_node->next;
     }
-	printf("smallest number\t(%d)found at index [%d]\n", small, *pos);
+	ft_printf("\033[1;36;45mSMALLEST  number (%d) found at index [%d]!\033[0m\n", small, *pos);
     return (small);
 }
 
