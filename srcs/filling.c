@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/13 14:27:14 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/23 12:05:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,19 @@ int	correct_char(char *str)
 			ft_printf("\t\t\tERRORE\n"); // Print error message if character is invalid
 			return (0);
 		}
+		if (str[i] == '-' || (str[i] >= '0' || str[i] <= '9'))
+		{
+			int j = i + 1;
+			while (str[j])
+			{
+				if (str[j] ==  str[i])
+				{
+					ft_printf("sei un cojone ce un duplicato\n");
+					return (0);
+				}
+			j++;
+			}
+		}	
 		i++;
 	}
 	return (1); // Return 1 if all characters are valid integers or '-'.
