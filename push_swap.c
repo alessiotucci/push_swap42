@@ -6,12 +6,28 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/13 16:55:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/23 13:44:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "incl/push_swap.h"
+
+int	has_repetitions(t_stack *stack)
+{
+	while (stack != NULL)
+	{
+		t_stack *current = stack->next;
+		while (current != NULL)
+		{
+			if (stack->nbr == current->nbr)
+				return (ft_printf("Repetition found\n"));
+			current = current->next;
+		}
+		stack = stack->next;
+	}
+	return (0); // No repetitions found
+}
 
 int get_list_length(t_stack *head)
 {
@@ -45,7 +61,8 @@ int	main(int ac, char *av[])
 	else if (ac > 2)
 		stack_a = fill_stack(ac, av);
 // TAGLIARE LA TESTA AL  TORO
-//	testa_toro(&stack_a);
+	if (has_repetitions(stack_a) != 0)
+		return (0);
 	update_indexes(stack_a);
 	print_stack(&stack_a);
 	len = get_list_length(stack_a);
