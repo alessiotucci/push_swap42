@@ -30,8 +30,8 @@ Now as 3rd of May I need to refactor all the code base to start working with lis
 
 | source folder| Description |
  | ----------------------------- | ------------------------------------------------- | 
-   | [`filling.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) | description |
-   | [`sorting.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) | description |
-   | [`moves.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) | description |
-   | [`moves2.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) | description |
+   | [`filling.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) |parsing argument from commmand line, both strings and digits|
+   | [`sorting.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) |sorting element|
+   | [`moves.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) |moves needed to move around numbers|
+   | [`moves2.c`](https://github.com/alessiotucci/push_swap42/blob/master/push_swap.c) |moves needed to move around numbers|
         
