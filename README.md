@@ -2,6 +2,8 @@
  
  I started my project before Easter break, but since then I  didn't do much. 
 
+Check [this website](https://www.toptal.com/developers/sorting-algorithms) to see algorithm visualization. 
+
 ### quick sort explained
 
 
