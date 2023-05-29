@@ -2,7 +2,7 @@
  
  I started my project before Easter break, but since then I  didn't do much. 
 
-### USEFUL RESOURCES  😇
+### quick sort explained
 
 
 <!-- BEGIN YOUTUBE-CARDS -->
