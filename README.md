@@ -8,6 +8,7 @@
 <!-- BEGIN YOUTUBE-CARDS -->
 
 [![QUICK SORT ALGORITHM](https://ytcards.demolab.com/?id=7h1s2SojIRw&ab_channel=AbdulBari)](https://youtu.be/7h1s2SojIRw) 
+[![QUICK SORT ALGORITHM](https://ytcards.demolab.com/?id=-qOVVRIZzao&ab_channel=AbdulBari)](https://youtu.be/-qOVVRIZzao) 
 
 <!-- END YOUTUBE-CARDS -->
 
