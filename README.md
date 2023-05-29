@@ -2,6 +2,16 @@
  
  I started my project before Easter break, but since then I  didn't do much. 
 
+### USEFUL RESOURCES  😇
+
+
+<!-- BEGIN YOUTUBE-CARDS -->
+
+[![QUICK SORT ALGORITHM](https://ytcards.demolab.com/?id=7h1s2SojIRw&ab_channel=AbdulBari)](https://youtu.be/7h1s2SojIRw) 
+
+<!-- END YOUTUBE-CARDS -->
+
+
 
 Now as 3rd of May I need to refactor all the code base to start working with list
  
