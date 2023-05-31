@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 13:48:34 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 14:03:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	quick_sort(t_stack **stack_a)
         }
         else
         {
-            ra(stack_a, 0);
-            update_indexes(*stack_a);
+             ra(stack_a, 0);
+             update_indexes(*stack_a);
+            ft_printf("+++++\nstack a\n");
+            print_stack(stack_a);
             update_indexes(*stack_b);
         }
     len_b = get_list_length(*stack_b);

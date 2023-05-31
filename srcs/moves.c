@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/11 15:05:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 14:05:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void pb(t_stack **stack_a, t_stack **stack_b, int j)
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = tmp;
 	if (j == 0)
-		write(1, "pb\n", 3);
+		ft_printf("\033[1;36;43mPB!\033[0m\n");
 }
 
 // Function to swap the first two elements in Stack A
