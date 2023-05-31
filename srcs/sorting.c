@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 13:40:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 14:26:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,18 +154,29 @@ void	sort_stack(t_stack **stack_a)
 		ft_printf("\033[32m%s\033[0m\n", "SORTING COMPLETED :)\n");
 }
 
-int	is_sorted(t_stack *stack_a)
+int is_sorted(t_stack *stack_a)
 {
 	t_stack *current = stack_a;
+	int increasing = 1;
+	int decreasing = 1;
 
 	while (current != NULL && current->next != NULL)
 	{
 		if (current->nbr > current->next->nbr)
-			return (0); // Not sorted
-	current = current->next;
+			increasing = 0;
+		if (current->nbr < current->next->nbr)
+			decreasing = 0;
+		current = current->next;
 	}
-return (1); // sorted :)
+
+	if (increasing)
+		return 1; // Sorted in increasing order
+	else if (decreasing)
+		return 2; // Sorted in decreasing order
+	else
+		return 0; // Not sorted
 }
+
 
 int	find_small(t_stack *stack_a, int *pos)
 {
