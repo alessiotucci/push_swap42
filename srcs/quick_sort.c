@@ -6,31 +6,63 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 14:08:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 15:31:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-int	find_mid_value(t_stack *stack_a)
+int *from_list_to_array(t_stack **stack_a)
 {
-    int size;
-    int mid_value;
-    int mid_position;
-    int i;
-    t_stack *current_node;
+    int size = get_list_length(*stack_a);
+    int *unsorted_array = malloc(size * sizeof(int));
+    t_stack *current = *stack_a;
+    int i = 0;
 
-    size = get_list_length(stack_a);
-    current_node = stack_a;
-    mid_position = size / 2;
-    i = 0;
-    while (i < mid_position)
+    // Store the values of the linked list in an array
+    while (current != NULL)
     {
-        current_node = current_node->next;
+        unsorted_array[i] = current->nbr;
+        current = current->next;
         i++;
     }
-    mid_value = current_node->nbr;
+
+    return unsorted_array;
+}
+int *sorting_array(int *array, int size)
+{
+    int sorted = 0;
+    int i = 0;
+    while (!sorted)
+    {
+        sorted = 1;
+        while (i < size - 1)
+        {
+            if (array[i] > array[i + 1])
+            {
+                int temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                sorted = 0;
+            }
+        i++;
+        }
+        size--;
+    }
+
+    return array;
+}
+
+
+
+int	find_mid_value(int *array_int, int size)
+{
+    int mid_value;
+
+    mid_value = array_int[size/2];
+
+    ft_printf("this is  mid %d\n", mid_value);
     return(mid_value);
 }
 
@@ -43,12 +75,12 @@ void	quick_sort(t_stack **stack_a)
 	stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	
     *stack_b = NULL;
-    middle = find_mid_value(*stack_a);
+    middle =  find_mid_value(sorting_array(from_list_to_array(stack_a), get_list_length(*stack_a)), get_list_length(*stack_a));
 	len_a = get_list_length(*stack_a);
     len_b = 0;
 
     int count = 0;
-    while (count < 3) // i need to change this condition
+    while (count <= (len_a / 2)) // i need to change this condition
     {
         if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
         {
