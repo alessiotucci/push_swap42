@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/15 12:51:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:40:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ int	find_small(t_stack *stack_a, int *pos)
         }
         current_node = current_node->next;
     }
-	ft_printf("\033[1;36;45mSMALLEST  number (%d) found at index [%d]!\033[0m\n", small, *pos);
+	//ft_printf("\033[1;36;45mSMALLEST  number (%d) found at index [%d]!\033[0m\n", small, *pos);
     return (small);
 }
 

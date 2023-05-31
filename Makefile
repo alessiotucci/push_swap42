@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 16:42:18 by atucci            #+#    #+#              #
-#    Updated: 2023/04/28 15:02:43 by atucci           ###   ########.fr        #
+#    Updated: 2023/05/31 13:37:49 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = ./push_swap.c \
       srcs/moves.c \
 	  srcs/sorting.c \
 	  srcs/moves2.c \
+	  srcs/quick_sort.c \
 
 #This sets the variable SRC to a list of C source files that are needed to build the push_swap executable.
 

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/23 13:44:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:46:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	main(int ac, char *av[])
 	// If there are more than 2 arguments, fill the stack with numbers from the arguments.
 	else if (ac > 2)
 		stack_a = fill_stack(ac, av);
-// TAGLIARE LA TESTA AL  TORO
 	if (has_repetitions(stack_a) != 0)
 		return (0);
 	update_indexes(stack_a);
@@ -72,9 +71,11 @@ int	main(int ac, char *av[])
 // If there are 3 elements in the stack, print a message indicating this.
 	if (len == 3)
 		sort_tre(&stack_a);
-	else if (len > 3)
-		sort_stack(&stack_a);
-	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
+    else if (len > 3)
+		//sort_stack(&stack_a);
+		ft_printf("\033[1;36;45mI have found the pivot(%d)!\033[0m\n", find_mid_value(stack_a));
+        quick_sort(&stack_a);
+    ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(&stack_a);
 	free(stack_a);
 	return (0);

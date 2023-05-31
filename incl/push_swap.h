@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/23 13:43:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:37:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ void update_indexes(t_stack *stack);
 int get_moves_to_top(t_stack *stack, int index);
 int is_empty(t_stack **stack);
 int		has_repetitions(t_stack *stack);
+int	find_mid_value(t_stack *stack_a);
+void	quick_sort(t_stack **stack_a);
 #endif
