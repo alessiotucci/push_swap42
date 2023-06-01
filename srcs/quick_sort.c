@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/01 10:45:34 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/01 12:36:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,56 +60,43 @@ t_stack *list_copy(t_stack **stack_a)
     }
     return (new_list);
 } 
-// sort list  copy(int *array, int size)
-t_stack *sort_the_list(t_stack **stack_a)
+// small helper function 
+void swap(t_stack *a, t_stack *b)
 {
-    // Check if the list is empty or has only one element
-    if (*stack_a == NULL || (*stack_a)->next == NULL)
+    int temp = a->nbr;
+    a->nbr = b->nbr;
+    b->nbr = temp;
+}
+// sort list  copy(int *array, int size)
+
+void sort_the_list(t_stack **head)
+{
+    if (*head == NULL || (*head)->next == NULL)
+        return;
+
+    int swapped;
+    t_stack *current;
+    t_stack *tail = NULL;
+
+    swapped = 1;
+    while (swapped)
     {
-        return *stack_a;
-    }
-    // Split the list into two halves
-    t_stack *slow = *stack_a;
-    t_stack *fast = (*stack_a)->next;
-    while (fast != NULL && fast->next != NULL)
-    {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    t_stack *second_half = slow->next;
-    slow->next = NULL;
-    // Recursively sort the two halves
-    t_stack *sorted_first_half = sort_the_list(stack_a);
-    t_stack *sorted_second_half = sort_the_list(&second_half);
-    // Merge the sorted halves
-    t_stack dummy;
-    t_stack *current = &dummy;
-    while (sorted_first_half != NULL && sorted_second_half != NULL)
-    {
-        if (sorted_first_half->nbr <= sorted_second_half->nbr)
+        swapped = 0;
+        current = *head;
+
+        while (current->next != tail)
         {
-            current->next = sorted_first_half;
-            sorted_first_half = sorted_first_half->next;
+            if (current->nbr > current->next->nbr)
+            {
+                swap(current, current->next);
+                swapped = 1;
+            }
+            current = current->next;
         }
-        else
-        {
-            current->next = sorted_second_half;
-            sorted_second_half = sorted_second_half->next;
-        }
-        current = current->next;
+        tail = current;
     }
-    // Append the remaining nodes
-    if (sorted_first_half != NULL)
-    {
-        current->next = sorted_first_half;
-    }
-    else if (sorted_second_half != NULL)
-    {
-        current->next = sorted_second_half;
-    }
-    // Return the head of the merged list
-    return dummy.next;
-} 
+}
+
 
 
 
@@ -139,12 +126,18 @@ void	quick_sort(t_stack **stack_a)
 	stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	
     *stack_b = NULL;
-    middle =  0 ;// this is just temporary
+    ///////// I need to find the middle point each time for the new list (right?)
+    t_stack *copy = list_copy(stack_a);
+    sort_the_list(&copy);
+    middle = get_mid_value(copy);
+    ft_printf("the middle value is [%d]\n", middle);
+    //////// I could create an other function that just copy, sort and give me the mid point back (right?)
+
 	len_a = get_list_length(*stack_a);
     len_b = 0;
 
-    int count = 0;
-    while (count <= (len_a / 2)) // i need to change this condition
+    //int count = 0;
+    while (len_b < len_a) // i need to change this condition
     {
         if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
         {
@@ -168,7 +161,7 @@ void	quick_sort(t_stack **stack_a)
     len_a = get_list_length(*stack_a);
     update_indexes(*stack_a);
     update_indexes(*stack_b);
-    count++;
+    //count++;
     }
     // for now lets do this...
     update_indexes(*stack_a);

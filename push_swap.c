@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/01 11:00:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/01 12:22:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,13 @@ int	main(int ac, char *av[])
 		//sort_stack(&stack_a);
 		
 		// lets create a copy of the list;
-    	t_stack *copy = list_copy(&stack_a);
-
-		/// lets sort the copy of the list;
-		t_stack *sorted_list = sort_the_list(&copy);
-		ft_printf("------------------\n");
-		print_stack(&sorted_list);
+   
+		// lets sort the copy of the list;
+	
 		// find the mid point in the copy;
-		int mid_value = get_mid_value(sorted_list);
-		ft_printf("this is the mid value %d\n", mid_value);
 		
+		//exit(1);
 		
-        exit(1);
 		quick_sort(&stack_a);
     ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(&stack_a);
