@@ -6,64 +6,128 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 15:31:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/01 10:45:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../incl/push_swap.h"
 
-int *from_list_to_array(t_stack **stack_a)
-{
-    int size = get_list_length(*stack_a);
-    int *unsorted_array = malloc(size * sizeof(int));
-    t_stack *current = *stack_a;
-    int i = 0;
+// list copy (t_stack **stack_a)
 
-    // Store the values of the linked list in an array
+t_stack *list_copy(t_stack **stack_a)
+{
+    t_stack *current = *stack_a;
+    t_stack *new_list = NULL;
+    t_stack *new_tail = NULL;
+
+    // Iterate over the original list
     while (current != NULL)
     {
-        unsorted_array[i] = current->nbr;
-        current = current->next;
-        i++;
-    }
-
-    return unsorted_array;
-}
-int *sorting_array(int *array, int size)
-{
-    int sorted = 0;
-    int i = 0;
-    while (!sorted)
-    {
-        sorted = 1;
-        while (i < size - 1)
+        // Create a new node
+        t_stack *new_node = malloc(sizeof(t_stack));
+        if (new_node == NULL)
         {
-            if (array[i] > array[i + 1])
+            // Error handling for memory allocation failure
+            printf("Error: Memory allocation failed\n");
+            // Clean up the already copied list
+            while (new_list != NULL)
             {
-                int temp = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
-                sorted = 0;
+                t_stack *temp = new_list;
+                new_list = new_list->next;
+                free(temp);
             }
-        i++;
+            return NULL;
         }
-        size--;
+        // Copy the data from the original node to the new node
+        new_node->nbr = current->nbr;
+        new_node->next = NULL;
+        // Append the new node to the new list
+        if (new_list == NULL)
+        {
+            // If the new list is empty, set the new node as the head
+            new_list = new_node;
+			new_tail = new_node;
+        }
+        else
+        {
+            // Otherwise, append the new node to the tail of the new list
+			new_tail->next = new_node;
+			new_tail = new_node;
+        }
+        // Move to the next node in the original list
+        current = current->next;
     }
-
-    return array;
-}
-
-
-
-int	find_mid_value(int *array_int, int size)
+    return (new_list);
+} 
+// sort list  copy(int *array, int size)
+t_stack *sort_the_list(t_stack **stack_a)
 {
-    int mid_value;
+    // Check if the list is empty or has only one element
+    if (*stack_a == NULL || (*stack_a)->next == NULL)
+    {
+        return *stack_a;
+    }
+    // Split the list into two halves
+    t_stack *slow = *stack_a;
+    t_stack *fast = (*stack_a)->next;
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    t_stack *second_half = slow->next;
+    slow->next = NULL;
+    // Recursively sort the two halves
+    t_stack *sorted_first_half = sort_the_list(stack_a);
+    t_stack *sorted_second_half = sort_the_list(&second_half);
+    // Merge the sorted halves
+    t_stack dummy;
+    t_stack *current = &dummy;
+    while (sorted_first_half != NULL && sorted_second_half != NULL)
+    {
+        if (sorted_first_half->nbr <= sorted_second_half->nbr)
+        {
+            current->next = sorted_first_half;
+            sorted_first_half = sorted_first_half->next;
+        }
+        else
+        {
+            current->next = sorted_second_half;
+            sorted_second_half = sorted_second_half->next;
+        }
+        current = current->next;
+    }
+    // Append the remaining nodes
+    if (sorted_first_half != NULL)
+    {
+        current->next = sorted_first_half;
+    }
+    else if (sorted_second_half != NULL)
+    {
+        current->next = sorted_second_half;
+    }
+    // Return the head of the merged list
+    return dummy.next;
+} 
 
-    mid_value = array_int[size/2];
 
-    ft_printf("this is  mid %d\n", mid_value);
-    return(mid_value);
+
+//	find_mid_value(int *array_int, int size)
+	int get_mid_value(t_stack *head)
+{
+    int length = get_list_length(head);
+    int mid_index = length / 2;
+
+    t_stack *current = head;
+    int	i = 0;
+	while (i < mid_index)
+    {
+        current = current->next;
+    	i++;
+	}
+
+    return current->nbr;
 }
 
 void	quick_sort(t_stack **stack_a)
@@ -75,7 +139,7 @@ void	quick_sort(t_stack **stack_a)
 	stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	
     *stack_b = NULL;
-    middle =  find_mid_value(sorting_array(from_list_to_array(stack_a), get_list_length(*stack_a)), get_list_length(*stack_a));
+    middle =  0 ;// this is just temporary
 	len_a = get_list_length(*stack_a);
     len_b = 0;
 

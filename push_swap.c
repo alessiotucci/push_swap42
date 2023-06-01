@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 15:29:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/01 11:00:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,22 @@ int	main(int ac, char *av[])
 // If there are 3 elements in the stack, print a message indicating this.
 	if (len == 3)
 		sort_tre(&stack_a);
-    else if (len > 3)
+  //  else if (len > 3)
 		//sort_stack(&stack_a);
 		
-		// from linked list to a array;
+		// lets create a copy of the list;
+    	t_stack *copy = list_copy(&stack_a);
 
-		/// lets sort the array;
-
-		// find the mid point in the array;
+		/// lets sort the copy of the list;
+		t_stack *sorted_list = sort_the_list(&copy);
+		ft_printf("------------------\n");
+		print_stack(&sorted_list);
+		// find the mid point in the copy;
+		int mid_value = get_mid_value(sorted_list);
+		ft_printf("this is the mid value %d\n", mid_value);
 		
 		
-		
-		//ft_printf("\033[1;36;45mI have found the pivot(%d)!\033[0m\n", find_mid_value(sorting_array(from_list_to_array(&stack_a), get_list_length(stack_a)), get_list_length(stack_a)));
-        //exit(1);
+        exit(1);
 		quick_sort(&stack_a);
     ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
 	print_stack(&stack_a);
