@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 13:54:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 12:00:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,17 +146,21 @@ int	correct_char(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] != '-' && str[i] != ' ') // Check if character is not '-' or space
-			&& (!(str[i] >= '0' && str[i] <= '9'))) // Check if character is not a digit
+		if (str[i] == '-' && !(str[i + 1] >= '0' && str[i + 1] <= '9'))
 		{
-			ft_printf("\t\t\tERRORE\n"); // Print error message if character is invalid
+			ft_printf("\033[0;31m\t\tError:\tminus sign is alone!\t\033[0m\n");
+			return 0;
+		}
+		if ((str[i] != '-' && str[i] != ' ')
+			&& (!(str[i] >= '0' && str[i] <= '9')))
+		{
+			ft_printf("\033[0;31m\t\tError:\tyou accidentaly put a non digits char!\t\033[0m\n");
 			return (0);
 		}
-		i++;
+	i++;
 	}
-	return (1); // Return 1 if all characters are valid integers or '-'.
+	return (1);
 }
-
 void	print_stack(t_stack **stk)
 {
 	t_stack	*tmp;
