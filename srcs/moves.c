@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 14:05:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 12:11:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void sb(t_stack **b, int j)
 
 void update_indexes(t_stack *stack)
 {
-    int i = 0;
+    int i;
+	i = 0;
     t_stack *node = stack;
 
     while (node != NULL)

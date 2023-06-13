@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/13 11:07:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 12:26:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,16 @@ void	quick_sort(t_stack **stack_a)
     sort_the_list(&copy);
     middle = get_mid_value(copy);
     ft_printf("the middle value is [%d]\n", middle);
+    /*
+
+    the     issue is with the RECURSION FUNCTION     THE STACK B 
+        is getting mallocated  every time of the recursion!!    
+
+    */
     //////// I could create an other function that just copy, sort and give me the mid point back (right?)
     check_and_push(stack_a, stack_b, middle);
+    print_stack(stack_b); 
+
 	len_a = get_list_length(*stack_a);
     if (len_a == 3)
         sort_tre(stack_a);
@@ -209,7 +217,7 @@ void	quick_sort(t_stack **stack_a)
     ft_printf("------------------------\nstack b\n");
     print_stack(stack_b); 
     */
-    ft_printf("-------=------\nstack b\n");
+    ft_printf("--=------\nstack B\n");
     print_stack(stack_b); 
     return ;
 }
