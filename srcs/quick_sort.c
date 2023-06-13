@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/13 12:26:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 17:11:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,15 +148,15 @@ void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
 }
 
 
-void	quick_sort(t_stack **stack_a)
+void	quick_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int		middle;
-	t_stack	**stack_b;
+	//t_stack	**stack_b;
     int     len_a;
    // int     len_b;
-	stack_b = (t_stack **)malloc(sizeof(t_stack *));
+	//stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	
-    *stack_b = NULL;
+    //*stack_b = NULL;
     ///////// I need to find the middle point each time for the new list (right?)
     t_stack *copy = list_copy(stack_a);
     sort_the_list(&copy);
@@ -176,7 +176,7 @@ void	quick_sort(t_stack **stack_a)
     if (len_a == 3)
         sort_tre(stack_a);
     else
-        quick_sort(stack_a);
+        quick_sort(stack_a, stack_b);
     /* 
     len_a = get_list_length(*stack_a);
     len_b = 0;
