@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/01 12:36:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 11:07:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,43 @@ void sort_the_list(t_stack **head)
     return current->nbr;
 }
 
+void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
+{
+    int len_a; 
+    int len_b;
+    
+    len_a = get_list_length(*stack_a);
+    len_b = 0;
+    while (len_a > len_b)
+    {
+        if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
+        {
+            pb(stack_a, stack_b, 0);
+         //   ft_printf("+++\nSTACK b\n");
+         //   print_stack(stack_b);
+        }
+        else
+        {
+            ra(stack_a, 0);
+         //   ft_printf("+++\nSTACK A\n");
+         //   print_stack(stack_a);
+        }
+        //  to do after the if else check
+        update_indexes(*stack_b);
+        len_b = get_list_length(*stack_b);
+        update_indexes(*stack_a);
+        len_a = get_list_length(*stack_a);
+    }
+    return ;
+}
+
+
 void	quick_sort(t_stack **stack_a)
 {
 	int		middle;
 	t_stack	**stack_b;
     int     len_a;
-    int     len_b;
+   // int     len_b;
 	stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	
     *stack_b = NULL;
@@ -132,12 +163,18 @@ void	quick_sort(t_stack **stack_a)
     middle = get_mid_value(copy);
     ft_printf("the middle value is [%d]\n", middle);
     //////// I could create an other function that just copy, sort and give me the mid point back (right?)
-
+    check_and_push(stack_a, stack_b, middle);
 	len_a = get_list_length(*stack_a);
+    if (len_a == 3)
+        sort_tre(stack_a);
+    else
+        quick_sort(stack_a);
+    /* 
+    len_a = get_list_length(*stack_a);
     len_b = 0;
 
     //int count = 0;
-    while (len_b < len_a) // i need to change this condition
+    while (len_a > len_b) // i need to change this condition
     {
         if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
         {
@@ -164,11 +201,15 @@ void	quick_sort(t_stack **stack_a)
     //count++;
     }
     // for now lets do this...
+    sort_tre(stack_a);
     update_indexes(*stack_a);
     update_indexes(*stack_b);
     ft_printf("------------------------\nstack a\n");
     print_stack(stack_a);
     ft_printf("------------------------\nstack b\n");
+    print_stack(stack_b); 
+    */
+    ft_printf("-------=------\nstack b\n");
     print_stack(stack_b); 
     return ;
 }

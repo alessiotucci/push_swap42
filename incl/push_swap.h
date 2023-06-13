@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/01 12:06:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/13 10:32:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ t_stack *list_copy(t_stack **stack_a);
 void swap(t_stack *a, t_stack *b);
 void sort_the_list(t_stack **stack_a);
 int get_mid_value(t_stack *head);
+void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle);
 #endif
