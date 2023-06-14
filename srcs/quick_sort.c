@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 14:43:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 15:21:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,7 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b != NULL)
 	{
 		// Find the position of the biggest number in stack_b
-		biggest_pos = find_big(*stack_b, &moves);
+		biggest_pos = find_big(stack_b, &moves);
 
 		// Rotate or reverse rotate stack_b to bring the biggest number to the top
 		count = 0;
@@ -257,7 +257,10 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
         update_indexes(*stack_b);
         // Push the top element from stack_b to stack_a
 		pa(stack_a, stack_b, 0);
-	}
+        update_indexes(*stack_a);
+        update_indexes(*stack_b);
+
+    }
     return ;
 }
 
