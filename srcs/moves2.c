@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/15 12:48:02 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:45:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ void ra(t_stack **a, int j)
 
 
 // Function to rotate stack B
-void rb(t_stack *stk)
+void rb(t_stack **b, int j)
 {
-/*	int tmp;
-	int i;
+    t_stack *tmp;
+    t_stack *first;
 
-	i = 0;
-	if (stk->lb < 2) // if there's only one element or less in stack B, return
-		return ;
-	tmp = stk->stack_b[0]; // save the first element of stack B
-	while (i < stk->lb - 1) // shift every element one position to the left
-	{
-		stk->stack_b[i] = stk->stack_b[i + 1];
-		i++;
-	}
-	stk->stack_b[i] = tmp; // place the saved element at the end of the stack
-*/	if (stk)
-	write(1, "rb\n", 3); // print "rb" to standard output
+    if (!*b || !(*b)->next)
+        return;
+    tmp = *b;
+    first = tmp;
+    *b = (*b)->next;
+    while (tmp->next)
+        tmp = tmp->next;
+    tmp->next = first;
+    first->next = NULL;
+    if (j == 0)
+        write(1, "rb\n", 3);
 }
+
 
 // Function to rotate both stack A and stack B
 void rr(t_stack *stk)
@@ -116,21 +116,31 @@ void	rra(t_stack **a, int j)
 
 
 // This function rotates stack B downwards by one position
-void rrb(t_stack *stk)
+void rrb(t_stack **b, int j)
 {
-/*	int tmp; // variable to store the top element of stack B
-	int i; // loop counter
-	i = stk->lb - 1;
-	tmp = stk->stack_b[i];
-	while (i > 0) // shift elements of stack B downwards
+	t_stack *tmp;
+	int i;
+
+	if (!*b || !(*b)->next)
+		return;
+	i = 0;
+	tmp = *b;
+	while ((*b)->next)
 	{
-		stk->stack_b[i] = stk->stack_b[i - 1];
+		*b = (*b)->next;
+		i++;
+	}
+	(*b)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
 		i--;
 	}
-	stk->stack_b[0] = tmp; // place the top element at the bottom of stack B
-*/if (stk)
-	write(1, "rrb\n", 4); // print the name of the operation to stdout
+	tmp->next = NULL;
+	if (j == 0)
+		write(1, "rrb\n", 4);
 }
+
 
 t_stack	*ft_lstlasty(t_stack *lst)
 {

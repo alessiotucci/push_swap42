@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:46:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:29:18 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:46:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	sa(t_stack **a, int j);
 void	sb(t_stack **stack_b, int j);
 void	ss(t_stack *stk);
 void	ra(t_stack **stk, int j);
-void	rb(t_stack *stk);
+void	rb(t_stack **stk, int j);
 void	rr(t_stack *stk);
 void	rra(t_stack **stk, int j);
-void	rrb(t_stack *stk);
+void	rrb(t_stack **stk, int j);
 void	sort_due(t_stack **stk);
 void	sort_tre(t_stack **stk);
 void	print_stack(t_stack **stk);
@@ -75,4 +75,5 @@ void swap(t_stack *a, t_stack *b);
 void sort_the_list(t_stack **stack_a);
 int get_mid_value(t_stack *head);
 void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle);
+void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b);
 #endif

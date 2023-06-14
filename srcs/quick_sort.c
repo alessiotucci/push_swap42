@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:30:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 14:43:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,14 @@ void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
 {
     int len_a; 
     int len_b;
+    int count;
     
+    count = -1;
     len_a = get_list_length(*stack_a);
     len_b = 0;
-    while (len_a > len_b)
+    while ((len_a > len_b) && count < len_b)
     {
-        if ((*stack_a)->index == 0 && (*stack_a)->nbr <= middle)
+        if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
         {
             pb(stack_a, stack_b, 0);
          //   ft_printf("+++\nSTACK b\n");
@@ -136,9 +138,7 @@ void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
         else
         {
             ra(stack_a, 0);
-         //   ft_printf("+++\nSTACK A\n");
-         //   print_stack(stack_a);
-            //exit(0);
+            count++;
         }
         //  to do after the if else check
         update_indexes(*stack_b);
@@ -172,13 +172,17 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
     */
     //////// I could create an other function that just copy, sort and give me the mid point back (right?)
     check_and_push(stack_a, stack_b, middle);
-    print_stack(stack_b); 
-
+    ft_printf("+++\nSTACK b\n");
+     print_stack(stack_b); 
+    ft_printf("+++\nSTACK A\n");
+     print_stack(stack_a);
 	len_a = get_list_length(*stack_a);
     if (len_a == 3)
     {
         sort_tre(stack_a);
         // than push from b to a;
+       //COMMENTING  THIS FOR NOW
+       selection_sort_stack_b(stack_a, stack_b);
     }    
     else
         quick_sort(stack_a, stack_b);
@@ -226,3 +230,34 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
     print_stack(stack_b); 
     return ;
 }
+
+void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
+{
+	int moves;
+	int count;
+	int biggest_pos;
+
+	// Loop until stack_b is empty
+	while (*stack_b != NULL)
+	{
+		// Find the position of the biggest number in stack_b
+		biggest_pos = find_big(*stack_b, &moves);
+
+		// Rotate or reverse rotate stack_b to bring the biggest number to the top
+		count = 0;
+		while (count < moves)
+		{
+			if (biggest_pos <= get_list_length(*stack_b) / 2)
+				rrb(stack_b, 0); // Reverse rotate stack_b
+			else
+				rb(stack_b, 0); // Rotate stack_b
+            update_indexes(*stack_b);
+			count++;
+		}
+        update_indexes(*stack_b);
+        // Push the top element from stack_b to stack_a
+		pa(stack_a, stack_b, 0);
+	}
+    return ;
+}
+

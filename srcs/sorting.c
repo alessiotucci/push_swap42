@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:29:36 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 14:45:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,14 +178,14 @@ int is_sorted(t_stack *stack_a)
 }
 
 
-int	find_big(t_stack *stack_a, int *pos)
+int	find_big(t_stack *stack_b, int *pos)
 {
     int big;
 	t_stack *current_node;
 
     *pos = 0;
-    big = stack_a->nbr; // Set small to the first element in the list
-    current_node = stack_a;
+    big = stack_b->nbr; // Set small to the first element in the list
+    current_node = stack_b;
     while (current_node != NULL)
     {
 
@@ -196,7 +196,7 @@ int	find_big(t_stack *stack_a, int *pos)
         }
         current_node = current_node->next;
     }
-	//ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", small, *pos);
+	ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", big, *pos);
     return (big);
 }
 

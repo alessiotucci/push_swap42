@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:05:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:47:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	main(int ac, char *av[])
    
 	// for testing puprpse only
 	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");
-	print_stack(&stack_a);
+	update_indexes(stack_a);
+    print_stack(&stack_a);
 	free(stack_a);
 	return (0);
 }
