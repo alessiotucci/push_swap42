@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/13 17:11:18 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:30:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,17 +126,19 @@ void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
     len_b = 0;
     while (len_a > len_b)
     {
-        if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
+        if ((*stack_a)->index == 0 && (*stack_a)->nbr <= middle)
         {
             pb(stack_a, stack_b, 0);
          //   ft_printf("+++\nSTACK b\n");
          //   print_stack(stack_b);
+
         }
         else
         {
             ra(stack_a, 0);
          //   ft_printf("+++\nSTACK A\n");
          //   print_stack(stack_a);
+            //exit(0);
         }
         //  to do after the if else check
         update_indexes(*stack_b);
@@ -174,7 +176,10 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
 
 	len_a = get_list_length(*stack_a);
     if (len_a == 3)
+    {
         sort_tre(stack_a);
+        // than push from b to a;
+    }    
     else
         quick_sort(stack_a, stack_b);
     /* 

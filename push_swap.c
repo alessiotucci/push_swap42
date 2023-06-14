@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/13 17:08:52 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:05:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	main(int ac, char *av[])
 		
 		//exit(1);
 	t_stack *stack_b = (t_stack *)malloc(sizeof(t_stack));
-	quick_sort(&stack_a, &stack_b);
+	stack_b = NULL;
+    quick_sort(&stack_a, &stack_b);
    
 	// for testing puprpse only
 	ft_printf("\nAfter the sorting the stack is indeed in order as you can see\n");

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/05/31 14:26:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:29:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	sort_stack(t_stack **stack_a)
 		conto = get_list_length(*stack_a);// start with the while cicle
 		while (conto > 3)
 		{
-			nb = find_small(*stack_a, &pos); // looking for the smallest number
+			nb = find_big(*stack_a, &pos); // looking for the smallest number
 			moves = get_moves_to_top(*stack_a, pos);
 			count = 0;
 			while (count < moves)
@@ -178,26 +178,26 @@ int is_sorted(t_stack *stack_a)
 }
 
 
-int	find_small(t_stack *stack_a, int *pos)
+int	find_big(t_stack *stack_a, int *pos)
 {
-    int small;
+    int big;
 	t_stack *current_node;
 
     *pos = 0;
-    small = stack_a->nbr; // Set small to the first element in the list
+    big = stack_a->nbr; // Set small to the first element in the list
     current_node = stack_a;
     while (current_node != NULL)
     {
 
-		if (current_node->nbr < small) // if it's smaller than the one I already have...
+		if (current_node->nbr > big) // if it's bigger than the one I already have...
         {
-            small = current_node->nbr; // we update the small variable
+            big = current_node->nbr; // we update the big variable
             *pos = current_node->index;
         }
         current_node = current_node->next;
     }
-	//ft_printf("\033[1;36;45mSMALLEST  number (%d) found at index [%d]!\033[0m\n", small, *pos);
-    return (small);
+	//ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", small, *pos);
+    return (big);
 }
 
 void testa_toro(t_stack **stack)
