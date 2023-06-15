@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:34:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:47:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/15 11:40:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(int ac, char *av[])
 	else if (ac > 2)
 		stack_a = fill_stack(ac, av);
 	if (has_repetitions(stack_a) != 0)
+		return (0);
+	if (is_sorted(stack_a))
 		return (0);
 	update_indexes(stack_a);
 	print_stack(&stack_a);
