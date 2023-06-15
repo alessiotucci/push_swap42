@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 15:21:07 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/15 11:03:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void    check_and_push(t_stack **stack_a, t_stack **stack_b, int middle)
     count = -1;
     len_a = get_list_length(*stack_a);
     len_b = 0;
-    while ((len_a > len_b) && count < len_b)
+    while ((len_a > len_b) && count < len_a)
     {
         if ((*stack_a)->index == 0 && (*stack_a)->nbr < middle)
         {
@@ -241,26 +241,35 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b != NULL)
 	{
 		// Find the position of the biggest number in stack_b
+	    printf("\033[33mStack B.\033[0m\n");
+		print_stack(stack_b);
 		biggest_pos = find_big(stack_b, &moves);
+		get_moves_to_top(*stack_a, moves);
 
 		// Rotate or reverse rotate stack_b to bring the biggest number to the top
 		count = 0;
 		while (count < moves)
 		{
-			if (biggest_pos <= get_list_length(*stack_b) / 2)
-				rrb(stack_b, 0); // Reverse rotate stack_b
+			if (moves <= get_list_length(*stack_b) / 2)
+				rb(stack_b, 0); // Reverse rotate stack_b
 			else
-				rb(stack_b, 0); // Rotate stack_b
+				rrb(stack_b, 0); // Rotate stack_b
             update_indexes(*stack_b);
 			count++;
 		}
         update_indexes(*stack_b);
         // Push the top element from stack_b to stack_a
 		pa(stack_a, stack_b, 0);
-        update_indexes(*stack_a);
-        update_indexes(*stack_b);
-
-    }
+		update_indexes(*stack_a);
+		update_indexes(*stack_b);
+	    printf("\033[36mCheck if stack  b is wrong.\033[0m\n");
+		print_stack(stack_b);
+		while (*stack_a && (*stack_a)->next && (*stack_a)->nbr > (*stack_a)->next->nbr)
+		{
+			sa(stack_a, 0);
+			update_indexes(*stack_a);
+		}
+	}
     return ;
 }
 

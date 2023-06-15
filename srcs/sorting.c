@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 15:21:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/15 10:34:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,8 +196,9 @@ int	find_big(t_stack **stack_b, int *pos)
         }
         current_node = current_node->next;
     }
-	//ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", big, *pos);
-    return (big);
+	ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", big, *pos);
+    update_indexes(*stack_b);
+	return (big);
 }
 
 void testa_toro(t_stack **stack)
