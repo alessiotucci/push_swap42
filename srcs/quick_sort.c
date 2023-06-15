@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/15 13:57:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/15 15:18:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,29 +233,44 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
 
 void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
-	int moves;
+	int pos;
 	int count;
-	int biggest_pos;
-
+	int bigNumber;
+	int	moves;
+	int conto;
+	
+	conto = get_list_length(*stack_b);
 	// Loop until stack_b is empty
-	while (*stack_b != NULL)
+	while (conto > 0)
 	{
 		// Find the position of the biggest number in stack_b
 	    printf("\033[33mStack B.\033[0m\n");
 		print_stack(stack_b);
-		biggest_pos = find_big(stack_b, &moves);
-		get_moves_to_top(*stack_a, moves);
-
-		// Rotate or reverse rotate stack_b to bring the biggest number to the top
+		bigNumber = find_big(stack_b, &pos);
+		moves = get_moves_to_top(*stack_a, pos);
 		count = 0;
 		while (count < moves)
 		{
-			if (moves <= get_list_length(*stack_b) / 2)
+			/*if (pos <= get_list_length(*stack_b) / 2)
 				rb(stack_b, 0); // Reverse rotate stack_b
 			else
 				rrb(stack_b, 0); // Rotate stack_b
             update_indexes(*stack_b);
-			count++;
+			*/
+				if (pos <= get_list_length(*stack_a) / 2)
+				{
+					rb(stack_b, 0);
+					update_indexes(*stack_b);
+					///print_stack(stack_a);
+				}
+				else
+				{
+					rrb(stack_b, 0);
+					update_indexes(*stack_b);
+					///print_stack(stack_a);
+				}
+		
+		count++;
 		}
         update_indexes(*stack_b);
         // Push the top element from stack_b to stack_a
@@ -266,6 +281,7 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 		print_stack(stack_b);
 		if (*stack_a && (*stack_a)->next && (*stack_a)->nbr > (*stack_a)->next->nbr)
 			sa(stack_a, 0);
+	conto = get_list_length(*stack_b);
 	}
     return ;
 }
