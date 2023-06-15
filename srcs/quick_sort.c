@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/15 11:15:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:57:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,7 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 		count = 0;
 		while (count < moves)
 		{
-			if (biggest_pos <= get_list_length(*stack_b) / 2)
+			if (moves <= get_list_length(*stack_b) / 2)
 				rb(stack_b, 0); // Reverse rotate stack_b
 			else
 				rrb(stack_b, 0); // Rotate stack_b
