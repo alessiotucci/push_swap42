@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/15 15:18:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/19 10:17:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,17 +237,13 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 	int count;
 	int bigNumber;
 	int	moves;
-	int conto;
 	
-	conto = get_list_length(*stack_b);
 	// Loop until stack_b is empty
-	while (conto > 0)
+	while (*stack_b != NULL)
 	{
 		// Find the position of the biggest number in stack_b
-	    printf("\033[33mStack B.\033[0m\n");
-		print_stack(stack_b);
 		bigNumber = find_big(stack_b, &pos);
-		moves = get_moves_to_top(*stack_a, pos);
+		moves = get_moves_to_top(*stack_b, pos);
 		count = 0;
 		while (count < moves)
 		{
@@ -257,19 +253,12 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 				rrb(stack_b, 0); // Rotate stack_b
             update_indexes(*stack_b);
 			*/
-				if (pos <= get_list_length(*stack_a) / 2)
-				{
+				if (pos <= get_list_length(*stack_b) / 2)
 					rb(stack_b, 0);
-					update_indexes(*stack_b);
-					///print_stack(stack_a);
-				}
 				else
-				{
 					rrb(stack_b, 0);
-					update_indexes(*stack_b);
+				update_indexes(*stack_b);
 					///print_stack(stack_a);
-				}
-		
 		count++;
 		}
         update_indexes(*stack_b);
@@ -281,7 +270,6 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 		print_stack(stack_b);
 		if (*stack_a && (*stack_a)->next && (*stack_a)->nbr > (*stack_a)->next->nbr)
 			sa(stack_a, 0);
-	conto = get_list_length(*stack_b);
 	}
     return ;
 }
