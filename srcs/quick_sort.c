@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:34:02 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/19 10:17:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/20 10:50:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
     t_stack *copy = list_copy(stack_a);
     sort_the_list(&copy);
     middle = get_mid_value(copy);
-    ft_printf("the middle value is [%d]\n", middle);
+    //ft_printf("the middle value is [%d]\n", middle);
     /*
 
     the     issue is with the RECURSION FUNCTION     THE STACK B 
@@ -172,14 +172,14 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
     */
     //////// I could create an other function that just copy, sort and give me the mid point back (right?)
     check_and_push(stack_a, stack_b, middle);
-    ft_printf("+++\nSTACK b\n");
-     print_stack(stack_b); 
-    ft_printf("+++\nSTACK A\n");
-     print_stack(stack_a);
+//    ft_printf("+++\nSTACK b\n");
+//     print_stack(stack_b); 
+//    ft_printf("+++\nSTACK A\n");
+//     print_stack(stack_a);
 	len_a = get_list_length(*stack_a);
-    if (len_a == 3)
+    if (len_a == 2)
     {
-        sort_tre(stack_a);
+        sort_due(stack_a);
         // than push from b to a;
        //COMMENTING  THIS FOR NOW
        selection_sort_stack_b(stack_a, stack_b);
@@ -226,8 +226,8 @@ void	quick_sort(t_stack **stack_a, t_stack **stack_b)
     ft_printf("------------------------\nstack b\n");
     print_stack(stack_b); 
     */
-    ft_printf("--=------\nstack B\n");
-    print_stack(stack_b); 
+ //   ft_printf("--=------\nstack B\n");
+   // print_stack(stack_b); 
     return ;
 }
 
@@ -266,10 +266,12 @@ void selection_sort_stack_b(t_stack **stack_a, t_stack **stack_b)
 		pa(stack_a, stack_b, 0);
 		update_indexes(*stack_a);
 		update_indexes(*stack_b);
-	    printf("\033[36mCheck if stack  b is wrong.\033[0m\n");
-		print_stack(stack_b);
-		if (*stack_a && (*stack_a)->next && (*stack_a)->nbr > (*stack_a)->next->nbr)
-			sa(stack_a, 0);
+	    //printf("\033[36mCheck if stack  b is wrong.\033[0m\n");
+		//print_stack(stack_b);
+		
+		//this is a FIX
+		/*if (*stack_a && (*stack_a)->next && (*stack_a)->nbr > (*stack_a)->next->nbr)
+			sa(stack_a, 0);*/
 	}
     return ;
 }

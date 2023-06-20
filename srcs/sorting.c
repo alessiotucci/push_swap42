@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:18:35 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/15 14:55:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/20 10:51:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	sort_due(t_stack **stack_a)
 {
 	// swap the first two elements if they are not sorted
-	ft_printf("I am sorting 2\n");
+	//ft_printf("I am sorting 2\n");
 	if (is_sorted(*stack_a) == 0)
 		sa(stack_a, 0);
  	update_indexes(*stack_a);
@@ -25,7 +25,7 @@ void	sort_due(t_stack **stack_a)
 
 void sort_tre(t_stack **stack_a)
 {
-		ft_printf("\033[1;32;41mI am sorting 3!\033[0m\n");
+		//ft_printf("\033[1;32;41mI am sorting 3!\033[0m\n");
 		// If the stack has less than three nodes, return without doing anything
     if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
         return;
@@ -196,8 +196,8 @@ int	find_big(t_stack **stack_b, int *pos)
         }
         current_node = current_node->next;
     }
-	ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", big, *pos);
-    update_indexes(*stack_b);
+//	ft_printf("\033[1;36;45mBIGGEST number (%d) found at index [%d]!\033[0m\n", big, *pos);
+//    update_indexes(*stack_b);
 	return (big);
 }
 

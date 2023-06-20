@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/15 13:01:03 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/20 10:53:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void pa(t_stack **a, t_stack **b, int j)
 	*b = (*b)->next;
 	(*a)->next = tmp;
 	if (j == 0)
-ft_printf("\033[0;37;46mpa\033[0m\n");
+//ft_printf("\033[0;37;46mpa\033[0m\n");
+		write(1, "pa\n", 3);
+
 
 }
 
@@ -42,7 +44,8 @@ void pb(t_stack **stack_a, t_stack **stack_b, int j)
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = tmp;
 	if (j == 0)
-		ft_printf("\033[1;36;43mPB!\033[0m\n");
+		//ft_printf("\033[1;36;43mpb\033[0m\n");
+		write(1, "pb\n", 3);
 }
 
 // Function to swap the first two elements in Stack A
