@@ -6,7 +6,10 @@
  
  I started my project before Easter break, but since then I  didn't do much.
  After few tries I asked for help to some of my peers,
- and I noticed that most of them were using either the ["Mechanical Turk"](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)  or the quick sort. 
+ and I noticed that most of them were using either the ["Mechanical Turk"](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)  or the quick sort.
+ 
+ 
+ A 42  student  even did a [```full video tutorial```](https://youtu.be/OaG81sDEpVk) about the push  swap project, some  many were just  watching the tutorial instead of trying to come up with a creative solution.
 
 <img width="242" alt="image" src="https://github.com/alessiotucci/push_swap42/assets/116757689/da30a652-c5da-445b-b276-ce099c80c739">
 
