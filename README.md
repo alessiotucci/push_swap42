@@ -2,6 +2,12 @@
  
  I started my project before Easter break, but since then I  didn't do much. 
 
+<img width="242" alt="image" src="https://github.com/alessiotucci/push_swap42/assets/116757689/da30a652-c5da-445b-b276-ce099c80c739">
+
+
+I have lost a lot of time to do this project
+
+
 Check [this website](https://www.toptal.com/developers/sorting-algorithms) to see algorithm visualization. 
 
 ### quick sort explained
