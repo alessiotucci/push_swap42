@@ -6,138 +6,81 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/13 12:00:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 18:44:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "../libft_plus/libft.h"
 #include "../incl/push_swap.h"
 
-//This function takes a string of numbers as input and splits them into separate integers to store in stack_a
-
+/*
+** Splits the input number string into a stack of t_stack nodes.
+** Each node in the stack represents a number from the input string.
+** The index of each node corresponds to its position in the input string.
+** Returns a pointer to the created stack.
+** If there's an error, it returns NULL.
+*/
 t_stack	*split_num_in_stack(char *number)
 {
-	int		count = 0;
+	int		count;
 	char	**input_number;
+	t_stack	*stack;
+	t_stack	*new_node;
 
-	// split the string into individual numbers and store them in input_number array
-	input_number = ft_split(number, ' ');
-	if (correct_char(number) == 0)
-		return NULL;
+	count = 0;
+	input_number = ft_split(number, ' '); // Split the input number string into an array of strings.
+	if (correct_char(number) == 0) // Check if the characters in the input string are valid.
+	{
+		free_split(input_number); // Free the memory allocated for the split strings.
+		return (NULL);
+	}
 
-	// create a new linked list
-	t_stack *stack = NULL;
-
-	// loop through the array of input numbers, converting each string to integer and storing them in the linked list
+	stack = NULL;
 	while (input_number[count])
 	{
-		// create a new node for the linked list
-		t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
-		if (!new_node)
-			return NULL;
+		new_node = create_new_node(input_number[count], count); // Create a new node for each number in the input string.
+		if (!new_node) // Check if memory allocation for the new node failed.
+			return (NULL);
 
-		// fill up the node with the integer value, index and pointers to next and previous nodes
-		new_node->nbr = ft_atoi(input_number[count]);
-		new_node->index = count;
-		new_node->next = NULL;
-		new_node->prev = NULL;
-
-		// add the node to the end of the linked list
-		if (!stack)
-		{
-			stack = new_node;
-		}
-		else
-		{
-			t_stack *last_node = stack;
-			while (last_node->next)
-				last_node = last_node->next;
-			last_node->next = new_node;
-			new_node->prev = last_node;
-		}
-
-		//print the current integer value and its index
-		ft_printf("Stack A [%d]: %d\n", count, new_node->nbr);
+		add_node_to_stack(&stack, new_node); // Add the new node to the stack.
 		count++;
 	}
 
-	// free the memory allocated for the input_number array
-	free(input_number);
-
-	// return a pointer to the head of the linked list
-	return stack;
+	free_split(input_number); // Free the memory allocated for the split strings.
+	return (stack);
 }
 
-
+/*
+** Fills the stack with numbers from the input arguments (ac and av).
+** Each argument may contain multiple numbers separated by spaces.
+** The index of each node corresponds to its position in the input arguments.
+** Returns a pointer to the filled stack.
+** If there's an error, it exits the program.
+*/
 t_stack	*fill_stack(int ac, char **av)
 {
-	t_stack *stack = NULL;
+	t_stack	*stck;
+	int		i;
 
-	int arg_index = 1;
-    while (arg_index < ac)
-    {
-        if (correct_char(av[arg_index]) == 0)
-			return NULL;
-		char **input_numbers = ft_split(av[arg_index], ' ');
-        int num_index = 0;
-        while (input_numbers[num_index])
-        {
-            t_stack *new_node = (t_stack*)malloc(sizeof(t_stack));
-            if (!new_node)
-                exit(1);
-            new_node->nbr = ft_atoi(input_numbers[num_index]);
-            // improved by ternaries
-			if (stack != NULL)
-			new_node->index = stack->index++;
-	else
-new_node->index = 0;
-			//
-			new_node->next = NULL;
-            new_node->prev = NULL;
-            if (!stack)
-            {
-                stack = new_node;
-            }
-            else
-            {
-                t_stack *last_node = stack;
-                while (last_node->next)
-                    last_node = last_node->next;
-                last_node->next = new_node;
-                new_node->prev = last_node;
-            }
-            num_index++;
-        }
-		free(input_numbers);
-        arg_index++;
-    }
-    return stack;
-}
-
-
-/*
-** This function counts the number of integers in a string, delimited by spaces.
-** It takes a string as input and returns an integer count.
-*/
-int	count_elements(char *str)
-{
-	int	count;
-	int	numbers;
-
-	numbers = 0;
-	count = 0;
-	while (str[count])
+	stck = NULL;
+	i = 1;
+	while (i < ac)
 	{
-		if (str[count] == ' ')
-			numbers++; // Increment the count of numbers for each space found
-		count++;
+		if (correct_char(av[i]) == 0) // Check if the characters in the input argument are valid.
+			exit(1); // If not valid, exit the program with an error.
+
+		if (!process_arguments(av[i], &stck)) // Process individual argument and add it to the stack.
+			exit(1); // If there's an error in processing, exit the program with an error.
+
+		i++;
 	}
-	return (numbers + 1); // Add 1 to account for the last number (no space after it)
+	return (stck);
 }
 
 /*
-** This function checks if the characters in a string are valid integers or '-'.
-** It takes a string as input and returns 1 if the string is valid, 0 if not.
+** Checks if the characters in the input string are valid.
+** Returns 1 if all characters are valid, 0 otherwise.
+** Prints an error message if there are invalid characters.
 */
 int	correct_char(char *str)
 {
@@ -146,30 +89,35 @@ int	correct_char(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '+')
+			i++;
 		if (str[i] == '-' && !(str[i + 1] >= '0' && str[i + 1] <= '9'))
 		{
-			ft_printf("\033[0;31m\t\tError:\tminus sign is alone!\t\033[0m\n");
-			return 0;
-		}
-		if ((str[i] != '-' && str[i] != ' ')
-			&& (!(str[i] >= '0' && str[i] <= '9')))
-		{
-			ft_printf("\033[0;31m\t\tError:\tyou accidentaly put a non digits char!\t\033[0m\n");
+			ft_printf("Error\n"); // Print an error message if '-' is not followed by a digit.
 			return (0);
 		}
-	i++;
+		if ((str[i] != '-' && str[i] != ' ') && (!(str[i] >= '0' && str[i] <= '9')))
+		{
+			ft_printf("Error\n"); // Print an error message if there's an invalid character.
+			return (0);
+		}
+		i++;
 	}
-	return (1);
+	return (1); // All characters are valid.
 }
+
+/*
+** Prints the contents of the stack.
+** Each node is printed with its index and value.
+*/
 void	print_stack(t_stack **stk)
 {
 	t_stack	*tmp;
 
 	tmp = *stk;
-	while (tmp != NULL) // Loop through the LIST
+	while (tmp != NULL)
 	{
-		ft_printf(" [%d]  %d\n", tmp->index, tmp->nbr); // Print each value of stack_a
+		ft_printf(" [%d]  %d\n", tmp->index, tmp->nbr);
 		tmp = tmp->next;
 	}
 }
-

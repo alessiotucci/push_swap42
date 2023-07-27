@@ -6,88 +6,69 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/14 11:45:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 18:47:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "../libft_plus/libft.h"
 #include "../incl/push_swap.h"
 
-// ra (rotate a) : shift up all elements of stack a by 1.
-// The first element becomes the last one.
-void ra(t_stack **a, int j)
+/*
+** Finds and returns the last node (tail) of a doubly linked list.
+** The function traverses the list starting from the given node 'lst'
+** and follows the 'prev' pointers until it reaches the last node.
+** Returns a pointer to the last node in the list.
+** If the input parameter 'lst' is NULL (empty list), it returns NULL.
+*/
+t_stack	*ft_lstlasty(t_stack *lst)
 {
-    t_stack *tmp;
-    t_stack *first;
+	if (lst == NULL)   // Check if the input list is empty (NULL).
+		return (NULL); // If so, return NULL.
 
-    if (!*a || !(*a)->next)
-        return;
-    tmp = *a;
-    first = tmp;
-    *a = (*a)->next;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = first;
-    first->next = NULL;
-    if (j == 0)
-        write(1, "ra\n", 3);
+	// Traverse the list backward by following the 'prev' pointers until the last node is reached.
+	while (lst->prev != NULL)
+		lst = lst->prev;
+
+	return (lst); // Return a pointer to the last node (tail) of the list.
 }
 
 
-
-
-// Function to rotate stack B
-void rb(t_stack **b, int j)
+void	ra(t_stack **a, int j)
 {
-    t_stack *tmp;
-    t_stack *first;
+	t_stack	*tmp;
+	t_stack	*first;
 
-    if (!*b || !(*b)->next)
-        return;
-    tmp = *b;
-    first = tmp;
-    *b = (*b)->next;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = first;
-    first->next = NULL;
-    if (j == 0)
-        write(1, "rb\n", 3);
-}
-
-
-// Function to rotate both stack A and stack B
-void rr(t_stack *stk)
-{
-/*	int tmp_a;
-	int tmp_b;
-	int i;
-
-	if (stk->la < 2 || stk->lb < 2) // if there's only one element or less in either stack, return
+	if (!*a || !(*a)->next)
 		return ;
-	tmp_a = stk->stack_a[0]; // save the first element of stack A
-	tmp_b = stk->stack_b[0]; // save the first element of stack B
-	i = 0;
-	while (i < stk->la - 1) // shift every element in stack A one position to the left
-	{
-		stk->stack_a[i] = stk->stack_a[i + 1];
-		i++;
-	}
-	stk->stack_a[i] = tmp_a; // place the saved element at the end of stack A
-	i = 0;
-	while (i < stk->lb - 1) // shift every element in stack B one position to the left
-	{
-		stk->stack_b[i] = stk->stack_b[i + 1];
-		i++;
-	}
-	stk->stack_b[i] = tmp_b; // place the saved element at the end of stack B
-*/if (stk)
-	write(1, "rr\n", 3); // print "rr" to standard output
+	tmp = *a;
+	first = tmp;
+	*a = (*a)->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = first;
+	first->next = NULL;
+	if (j == 0)
+		write(1, "ra\n", 3);
 }
 
-// Function to reverse rotate stack A
-// rra (reverse rotate a) : shift down all elements of stack a by 1.
-// The last element becomes the first one.
+void	rb(t_stack **b, int j)
+{
+	t_stack	*tmp;
+	t_stack	*first;
+
+	if (!*b || !(*b)->next)
+		return ;
+	tmp = *b;
+	first = tmp;
+	*b = (*b)->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = first;
+	first->next = NULL;
+	if (j == 0)
+		write(1, "rb\n", 3);
+}
+
 void	rra(t_stack **a, int j)
 {
 	t_stack	*tmp;
@@ -113,16 +94,13 @@ void	rra(t_stack **a, int j)
 		write(1, "rra\n", 4);
 }
 
-
-
-// This function rotates stack B downwards by one position
-void rrb(t_stack **b, int j)
+void	rrb(t_stack **b, int j)
 {
-	t_stack *tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
 	if (!*b || !(*b)->next)
-		return;
+		return ;
 	i = 0;
 	tmp = *b;
 	while ((*b)->next)
@@ -139,19 +117,5 @@ void rrb(t_stack **b, int j)
 	tmp->next = NULL;
 	if (j == 0)
 		write(1, "rrb\n", 4);
-}
-
-
-t_stack	*ft_lstlasty(t_stack *lst)
-{
-	// check the list first
-	if (lst == NULL)
-		return (NULL);
-
-	// traverse the list backwards until we reach the last element
-	while (lst->prev != NULL)
-		lst = lst->prev;
-
-	return (lst);
 }
 
