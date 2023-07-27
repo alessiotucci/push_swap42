@@ -29,11 +29,19 @@ Check [this website](https://www.toptal.com/developers/sorting-algorithms) to se
 <!-- END YOUTUBE-CARDS -->
 
 
+THOSE ARE FEW NOTES LEFT IN THE README.MB
 
-Now as 3rd of May I need to refactor all the code base to start working with list
+
+```Now as 3rd of May I need to refactor all the code base to start working with list```
 
 
-as 31 of May I need to use the quick sort algorithm since my selection sort is incredibly moves-expensive.
+I soon realized that working with a list was simpler in a sense of moves, so I decided to not use int arrays;
+
+
+```as 31 of May I need to use the quick sort algorithm since my selection sort is incredibly moves-expensive.```
+
+# SELECTION SORT
+I use the quick sort  only when pushing numbers from the stack A to the stack B, I stayed loyal to the selection sort when pushing  back from B to A;
  
 | function name | Description | youtube links |
  | ----------------------------- | ------------------------------------------------- | ------------------------------------------------------- |
