@@ -1,4 +1,8 @@
  ### How I structured my project
+
+ [![atucci's 42 push_swap Score](https://badge42.vercel.app/api/v2/clfazuqz3001108jxp6bw1lum/project/3060049)](https://github.com/JaeSeoKim/badge42)
+
+ 
  
  I started my project before Easter break, but since then I  didn't do much. 
 
