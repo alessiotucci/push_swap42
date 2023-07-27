@@ -11,7 +11,9 @@
 <img width="242" alt="image" src="https://github.com/alessiotucci/push_swap42/assets/116757689/da30a652-c5da-445b-b276-ce099c80c739">
 
 
-I have lost a lot of time to do this project
+I have lost a lot of time to do this project, mainly because  I wanted to find my own way of sorting numbers, and sadly my method barely pass the minimum requirements, as you guys can see from the grade badge...
+
+The code is  not well structured, and  is kind of messy, but spending so much time on sorting algorithm helped me have a better understanding of them, here there are some videos I have found very helpful when I switch over to the quick sort algorithm... 
 
 
 Check [this website](https://www.toptal.com/developers/sorting-algorithms) to see algorithm visualization. 
