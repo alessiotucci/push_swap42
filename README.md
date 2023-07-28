@@ -1,4 +1,4 @@
- ### How I structured my project
+ ### PUSH SWAP: sort a stack using a limited set of instruction
 
  [![atucci's 42 push_swap Score](https://badge42.vercel.app/api/v2/clfazuqz3001108jxp6bw1lum/project/3060049)](https://github.com/JaeSeoKim/badge42)
 
