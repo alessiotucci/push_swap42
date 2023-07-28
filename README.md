@@ -1,5 +1,16 @@
  ### PUSH SWAP: sort a stack using a limited set of instruction
 
+
+## the following are  only allowed instruction used to sort the stack A.
+
+![image](https://github.com/alessiotucci/push_swap42/assets/116757689/982346fa-2879-46fb-823f-db90fd45c7a2)
+
+
+![image](https://github.com/alessiotucci/push_swap42/assets/116757689/5dcc99a6-5395-4db2-b3ff-f95a69531a90)
+
+
+
+
  [![atucci's 42 push_swap Score](https://badge42.vercel.app/api/v2/clfazuqz3001108jxp6bw1lum/project/3060049)](https://github.com/JaeSeoKim/badge42)
 
  
