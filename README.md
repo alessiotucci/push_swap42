@@ -11,7 +11,6 @@
 
 
 
- [![atucci's 42 push_swap Score](https://badge42.vercel.app/api/v2/clfazuqz3001108jxp6bw1lum/project/3060049)](https://github.com/JaeSeoKim/badge42)
 
  
  
@@ -26,6 +25,7 @@
 
 
 I have lost a lot of time to do this project, mainly because  I wanted to find my own way of sorting numbers, and sadly my method barely pass the minimum requirements, as you guys can see from the grade badge...
+ [![atucci's 42 push_swap Score](https://badge42.vercel.app/api/v2/clfazuqz3001108jxp6bw1lum/project/3060049)](https://github.com/JaeSeoKim/badge42)
 
 The code is  not well structured, and  is kind of messy, but spending so much time on sorting algorithm helped me have a better understanding of them, here there are some videos I have found very helpful when I switch over to the quick sort algorithm... 
 
