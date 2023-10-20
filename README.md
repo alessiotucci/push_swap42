@@ -37,7 +37,11 @@ Check [this website](https://www.toptal.com/developers/sorting-algorithms) to se
 
 <!-- BEGIN YOUTUBE-CARDS -->
 
-[![this supposed to be the title](https://ytcards.demolab.com/?id=7h1s2SojIRw&ab_channel=AbdulBari)](https://youtu.be/7h1s2SojIRw)  [![QUICK SORT ALGORITHM](https://ytcards.demolab.com/?id=XE4VP_8Y0BU&ab_channel=Computerphile)](https://youtu.be/XE4VP_8Y0BU) [![ALGORITHM](https://ytcards.demolab.com/?id=-qOVVRIZzao&ab_channel=AbdulBari)](https://youtu.be/-qOVVRIZzao) 
+[![this supposed to be the title](https://ytcards.demolab.com/?id=7h1s2SojIRw&ab_channel=AbdulBari)](https://youtu.be/7h1s2SojIRw)
+
+[![QUICK SORT ALGORITHM](https://ytcards.demolab.com/?id=XE4VP_8Y0BU&ab_channel=Computerphile)](https://youtu.be/XE4VP_8Y0BU)
+
+[![ALGORITHM](https://ytcards.demolab.com/?id=-qOVVRIZzao&ab_channel=AbdulBari)](https://youtu.be/-qOVVRIZzao) 
 
 
 <!-- END YOUTUBE-CARDS -->
